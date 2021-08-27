@@ -1,4 +1,4 @@
-import {Compte} from "./Compte";
+import {Compte} from "./compte";
 
 export class Utilisateur extends Compte {
   moyenPaiement: string;

@@ -1,4 +1,4 @@
-import {Utilisateur} from "./Utilisateur";
+import {Utilisateur} from "./utilisateur";
 
 export class Message {
 

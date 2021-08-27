@@ -1,4 +1,6 @@
-export class field {
+import {Utilisateur} from "./utilisateur";
+
+export class Field {
   id : number;
   version: number;
   categorie : string;

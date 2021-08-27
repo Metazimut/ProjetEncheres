@@ -1,4 +1,4 @@
-import {Utilisateur} from "./Utilisateur";
+import {Utilisateur} from "./utilisateur";
 import {ParticipationEnchere} from "./participationEnchere";
 import {Categorie} from "./categorie";
 import {Commentaire} from "./commentaire";
