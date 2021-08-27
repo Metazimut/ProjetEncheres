@@ -1,3 +1,5 @@
+import {Utilisateur} from "./Utilisateur";
+import {Publication} from "./publication";
 
 export class ParticipationEnchere {
 
