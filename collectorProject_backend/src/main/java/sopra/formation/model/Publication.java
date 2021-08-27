@@ -45,11 +45,11 @@ public class Publication {
 	@Column(name = "prixActuel")
 	@JsonView(Views.ViewCommon.class)
 	private Long prixActuel;
-	@Column(name = "duree")
+	@Column(name = "dataEcheance")
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@JsonView(Views.ViewCommon.class)
-	private Date duree;
+	private Date dateEcheance;
 	@ManyToOne
 	@JoinColumn(name = "publicateur_id")
 	@JsonView(Views.ViewPublication.class)
@@ -124,11 +124,11 @@ public class Publication {
 	}
 
 	public Date getDuree() {
-		return duree;
+		return dateEcheance;
 	}
 
 	public void setDuree(Date duree) {
-		this.duree = duree;
+		this.dateEcheance = duree;
 	}
 
 	public Utilisateur getPublicateur() {
@@ -166,7 +166,7 @@ public class Publication {
 	@Override
 	public String toString() {
 		return "Publication [id=" + id + ", version=" + version + ", nom=" + nom + ", description=" + description
-				+ ", img=" + img + ", prixDepart=" + prixDepart + ", prixActuel=" + prixActuel + ", duree=" + duree
+				+ ", img=" + img + ", prixDepart=" + prixDepart + ", prixActuel=" + prixActuel + ", duree=" + dateEcheance
 				+ ", categorie=" + categorie + ", encheres=" + encheres + "]";
 	}
 	
