@@ -39,9 +39,9 @@ public class Message {
 	private Date dateCreation;
 	
 	@ManyToOne
-	@JoinColumn(name = "envoyeur_id")
+	@JoinColumn(name = "emetteur_id")
 	@JsonView(Views.ViewMessage.class)
-	private Utilisateur envoyeur;
+	private Utilisateur emetteur;
 	
 	@ManyToOne
 	@JoinColumn(name = "recepteur_id")
@@ -94,12 +94,12 @@ public class Message {
 
 
 	public Utilisateur getEnvoyeur() {
-		return envoyeur;
+		return emetteur;
 	}
 
 
 	public void setEnvoyeur(Utilisateur envoyeur) {
-		this.envoyeur = envoyeur;
+		this.emetteur = envoyeur;
 	}
 
 
@@ -116,7 +116,7 @@ public class Message {
 	@Override
 	public String toString() {
 		return "Message [id=" + id + ", version=" + version + ", messageTxt=" + messageTxt + ", dateCreation="
-				+ dateCreation + ", envoyeur=" + envoyeur + ", recepteur=" + recepteur + "]";
+				+ dateCreation + ", envoyeur=" + emetteur + ", recepteur=" + recepteur + "]";
 	}
 
 
