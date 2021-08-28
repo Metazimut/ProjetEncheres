@@ -1,3 +1,14 @@
 export class Categorie {
-  constructor(id?:number, version?:number, categorieNom?: string, imgCat?: string) {}
+  id:number;
+  version:number;
+  categorieNom:string;
+  imgCat:string;
+
+
+  constructor(id?: number, version?: number, categorieNom?: string, imgCat?: string) {
+    this.id = id;
+    this.version = version;
+    this.categorieNom = categorieNom;
+    this.imgCat = imgCat;
+  }
 }

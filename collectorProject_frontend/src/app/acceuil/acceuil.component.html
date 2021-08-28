@@ -1,4 +1,5 @@
-<div class="col-4" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<h4>Last Publications</h4>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -6,13 +7,19 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" src="../../assets/pokemon/imgPokemon1.png" alt="First slide" class="mx-auto d-block" width="350" height="350">
+      <a [routerLink]="['/categorie/']">
+      <img class="d-block img-fluid" [src]='["../../assets/"+listPublications().pop().img]' alt="First slide" class="mx-auto d-block" width="350" height="350">
+      </a>
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="../../assets/pokemon/imgPokemon2.jpg" alt="Second slide" class="mx-auto d-block" width="350" height="350">
+      <a [routerLink]="['/categorie/']">
+      <img class="d-block img-fluid" [src]='["../../assets/"+listPublications().pop().img]' alt="Second slide" class="mx-auto d-block" width="350" height="350">
+      </a>
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="../../assets/pokemon/imgPokemon3.jpg" alt="Third slide" class="mx-auto d-block" width="350" height="350">
+      <a [routerLink]="['/categorie/']">
+      <img class="d-block img-fluid" [src]='["../../assets/"+listPublications().pop().img]' alt="Third slide" class="mx-auto d-block" width="350" height="350">
+      </a>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -27,26 +34,47 @@
 
 <br>
 <br>
-<br>
-<br>
 
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body text-center">
-      <img src="../../assets/pokemon/imgPokemon2.jpg" alt="Second slide" class="rounded-circle" width="200" height="200">
-      <p>Categorie : Pokemon</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body text-center">
-      <img src="../../assets/pokemon/imgPokemon2.jpg" alt="Second slide" class="rounded-circle" width="200" height="200">
-      <p>Categorie : Pokemon</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body text-center">
-      <img src="../../assets/pokemon/imgPokemon4.png" alt="Second slide" class="rounded-circle" width="200" height="200">
-      <p>Categorie : Pokemon</p>
+<h4>Top Categories</h4>
+<div class="raw card-group">
+  <div *ngFor="let cat of listCategories().splice(1,3)" class="col-4">
+    <div class="card">
+      <p class="card-title text-center">{{cat.categorieNom}}</p>
+      <a class="text-center"[routerLink]="['/categorie/'+cat.id]"><img [src]='["../../assets/"+cat.imgCat]'></a>
     </div>
   </div>
 </div>
+
+<br>
+<br><br>
+<br>
+
+<!-- Footer -->
+<footer class="page-footer p-3 mb-2 bg-dark text-white">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a [routerLink]="['/inscription']" class="btn btn-primary">Sign up!</a>
+      </li>
+    </ul>
+    <!-- Call to action -->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a [routerLink]="['/accueil']"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+

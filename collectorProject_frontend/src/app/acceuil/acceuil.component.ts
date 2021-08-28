@@ -11,8 +11,8 @@ import {Categorie} from "../model/categorie";
 export class AcceuilComponent implements OnInit {
 
   constructor(private accueilService:AcceuilService) {
-    this.findAllPublications();
     this.findAllCategories();
+    this.findAllPublications();
   }
 
   ngOnInit(): void {
