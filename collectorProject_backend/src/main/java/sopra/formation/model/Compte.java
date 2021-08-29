@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-public abstract class Compte {
+public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewCommon.class)

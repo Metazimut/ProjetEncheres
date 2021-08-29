@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AchatComponent } from './achat/achat.component';
+// import { AchatComponent } from './achat/achat.component';
+import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
+import {FormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
-    AchatComponent
+    // AchatComponent,
+    UtilisateurComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class FrontModule { }

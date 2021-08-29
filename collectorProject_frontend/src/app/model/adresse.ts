@@ -1,3 +1,5 @@
+import {Compte} from "./compte";
+
 export class Adresse {
   id: number;
   version: number;
@@ -6,6 +8,7 @@ export class Adresse {
   codePostal: string;
   ville: string;
   pays: string;
+  compte: Compte;
 
   constructor(id?: number, version?: number, rue?: string, complement?: string, codePostal?: string, ville?: string,
               pays?: string) {

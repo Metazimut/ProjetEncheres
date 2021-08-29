@@ -1,4 +1,5 @@
 import {Compte} from "./compte";
+import {Adresse} from "./adresse";
 
 export class Utilisateur extends Compte {
   moyenPaiement: string;

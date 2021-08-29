@@ -131,6 +131,9 @@ class CollectorProjectBootApplicationTests {
 	public void ICompteRepo() {
 		Utilisateur ut1 = new Utilisateur();
 		ut1.setNom("mat");
+		ut1.setPrenom("wui");
+		ut1.setEmail("w.mat@gmail.com");
+		ut1.setPseudo("meta");
 		ut1 = compteRepo.save(ut1);
 		
 		Adresse adr1 = new Adresse();

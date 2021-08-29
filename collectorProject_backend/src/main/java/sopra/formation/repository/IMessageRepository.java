@@ -7,6 +7,6 @@ import sopra.formation.model.Message;
 import sopra.formation.model.Utilisateur;
 
 public interface IMessageRepository extends JpaRepository<Message, Long> {
-	List<Message> findAllByEnvoyeur(Utilisateur envoyeur);
+	List<Message> findAllByEmetteur(Utilisateur envoyeur);
 	List<Message> findAllByRecepteur(Utilisateur recepteur);
 }
