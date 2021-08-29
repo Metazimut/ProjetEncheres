@@ -3,8 +3,14 @@
     <li class="nav-item" routerLinkActive="active" >
       <a class="nav-link" [routerLink]="['/accueil']">Acceuil img</a>
     </li>
-    <li>
-      <button class="btn btn-primary btn-lg active">Se connecter</button>
+    <li *ngIf="isType('Utilisateur')" class="nav-item">
+      <button [routerLink]="['/connection']" class="btn btn-primary btn-lg active">Bonjour</button>
+    </li>
+    <li *ngIf="!isConnected()" class="nav-item" routerLinkActive="active">
+      <button [routerLink]="['/connection']" class="btn btn-primary btn-lg active">Se connecter</button>
+    </li>
+    <li *ngIf="isConnected()" class="nav-item" routerLinkActive="active">
+      <button [routerLink]="['/accueil']" class="btn btn-primary btn-lg active">Se déconnecter</button>
     </li>
   </ul>
 </nav>

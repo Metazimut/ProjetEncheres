@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcceuilComponent,
+    ConnectionComponent,
   ],
   imports: [
     BrowserModule,
