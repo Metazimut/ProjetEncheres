@@ -10,7 +10,7 @@
       <button [routerLink]="['/connection']" class="btn btn-primary btn-lg active">Se connecter</button>
     </li>
     <li *ngIf="isConnected()" class="nav-item" routerLinkActive="active">
-      <button [routerLink]="['/accueil']" class="btn btn-primary btn-lg active">Se déconnecter</button>
+      <button (click)="Disconnect()" [routerLink]="['/accueil']" class="btn btn-primary btn-lg active">Se déconnecter</button>
     </li>
   </ul>
 </nav>

@@ -1,5 +1,6 @@
 import {Component, ElementRef, Renderer2} from '@angular/core';
 import {SessionService} from "./session.service";
+import {UserDTO} from "./model/UserDTO";
 
 @Component({
   selector: 'app-root',
@@ -19,5 +20,10 @@ export class AppComponent {
 
     isType(type:string): boolean {
       return this.sessionService.type == type;
+    }
+
+    Disconnect() {
+      this.sessionService.user = null;
+      this.sessionService.type = null;
     }
 }
