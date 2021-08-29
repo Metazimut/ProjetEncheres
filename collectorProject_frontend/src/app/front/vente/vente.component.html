@@ -1,0 +1,80 @@
+
+<div class="container">
+  <div class="card">
+  <h2>Votre annonce :</h2>
+
+    <label>Image de l'annonce :</label>
+  <div class="loadimage"><input type="file" class="form-control-file border"></div>
+  </div>
+
+  <div class="card">
+  <form action="/action_page.php" class="was-validated">
+    <div class="form-group">
+      <label for="titre">Titre :</label>
+      <input type="text" class="form-control" id="titre" placeholder="Ajouter le titre de votre annonce" name="titre" required>
+      <div class="valid-feedback">Valide.</div>
+      <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#demo" class="text-danger" class="btn btn-link">?</button><div id="demo" class="collapse">
+        Merci de renseigner le titre de votre annonce. Sans titre votre annonce ne peut pas être validée </div>
+      </div>
+    </div>
+    </form>
+      <form>
+        <select name="cars" class="custom-select">
+          <option selected>Catégorie</option>
+          <option value="">Catégorie1</option>
+          <option value="">Catégorie2</option>
+          <option value="">Catégorie3</option>
+        </select>
+      </form>
+
+    <form action="/action_page.php" class="was-validated">
+    <div class="form-group">
+      <label for="description">Description :</label>
+      <textarea class="form-control" rows="5" id="description" placeholder="Ajouter une description" name="description" required></textarea>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#demo" class="text-danger" class="btn btn-link">?</button><div id="demo" class="collapse">
+        Une description précise de votre article insitera de nouveaux participant à encherir</div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+  <div class="container">
+    <div class="card">
+      <form>
+        <select name="etat" class="custom-select">
+          <option selected>État de vente : </option>
+          <option value="Parfait">Parfait</option>
+          <option value="Correct">Correct</option>
+          <option value="Bon">Bon</option>
+          <option value="Moyen">Moyen</option>
+          <option value="Abimé">Abimé</option>
+          <option value="pp">Pour pièces</option>
+        </select>
+      </form>
+      <form action="/action_page.php">
+        <div class="form-group">
+          <label for="annee">Année de fabrication :</label>
+          <input type="email" class="form-control" id="annee" placeholder="Année de fabricattion" name="email">
+        </div>
+        <div class="form-group">
+          <label for="annee2">Année d'achat :</label>
+          <input type="password" class="form-control" id="annee2" placeholder="Année d'achat" name="pswd">
+        </div>
+      </form>
+
+      <form action="/action_page.php" class="was-validated">
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember" required> j'accepte les termes des trucs et le blabla.
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Check this checkbox to continue.</div>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
