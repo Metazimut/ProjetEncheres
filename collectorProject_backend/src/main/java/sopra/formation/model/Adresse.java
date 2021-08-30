@@ -39,9 +39,10 @@ public class Adresse {
 	private String pays;
 	
 	@ManyToOne
-	@JoinColumn(name = "compte_id")
+	@JoinColumn(name = "utilisateur_id")
 	@JsonView(Views.ViewAdresse.class)
-	private Compte compte;
+	private Utilisateur utilisateur;
+
 
 	public Adresse() {
 		super();
@@ -127,15 +128,13 @@ public class Adresse {
 	}
 
 
-	public Compte getCompte() {
-		return compte;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
-
 
 	@Override
 	public String toString() {

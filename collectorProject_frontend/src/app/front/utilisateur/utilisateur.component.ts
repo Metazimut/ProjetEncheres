@@ -26,29 +26,38 @@ export class UtilisateurComponent implements OnInit {
   }
 
 
+
   save() {
     if (this.utilisateurForm.id) {
-      this.utilisateurService.modify(this.utilisateurForm);
+      this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
+        this.utilisateurForm=resp;
+        });
     } else {
-      this.utilisateurService.create(this.utilisateurForm);
+      this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
+        this.utilisateurForm=resp;
+      });
     }
-    for(const adr of this.adresseForm){
-      adr.compte=this.utilisateurForm;
-      if (adr.id) {
-        console.log("adr.version "+adr.version);
-        this.adresseService.modify(adr);
+    for(let i in this.adresseForm){
+      this.adresseForm[i].utilisateur=this.utilisateurForm;
+      if (this.adresseForm[i].id) {
+        this.adresseService.modify(this.adresseForm[i]).subscribe(resp => {
+          this.adresseForm[i]=resp;
+        });
       } else {
-        this.adresseService.create(adr);
+        this.adresseService.create(this.adresseForm[i]).subscribe(resp => {
+          this.adresseForm[i]=resp;
+        });
       }
+
     }
-    this.loadUtilisateur();
+
   }
 
   loadUtilisateur(){
     if (!isNaN(this.utilisateurForm.id)) {
       this.utilisateurService.findById(this.utilisateurForm.id).subscribe(resp => {
         this.utilisateurForm = resp;
-        this.adresseService.findAllByCompteId(this.utilisateurForm.id).subscribe(adr => {
+        this.adresseService.findAllByUtilisateurId(this.utilisateurForm.id).subscribe(adr => {
           this.adresseForm = adr;
         })
       })

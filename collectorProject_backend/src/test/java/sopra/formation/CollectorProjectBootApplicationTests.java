@@ -133,7 +133,6 @@ class CollectorProjectBootApplicationTests {
 		ut1.setNom("mat");
 		ut1.setPrenom("wui");
 		ut1.setEmail("w.mat@gmail.com");
-		ut1.setPseudo("meta");
 		ut1 = compteRepo.save(ut1);
 		
 		Adresse adr1 = new Adresse();
@@ -141,7 +140,7 @@ class CollectorProjectBootApplicationTests {
 		adr1.setVille("dunkerque");
 		adr1.setCodePostal("59640");
 		adr1.setPays("france");
-		adr1.setCompte(ut1);
+//		adr1.setCompte(ut1);
 		adr1 = adresseRepo.save(adr1);
 		
 		Adresse adr2 = new Adresse();
@@ -149,7 +148,7 @@ class CollectorProjectBootApplicationTests {
 		adr2.setVille("Croix");
 		adr2.setCodePostal("59170");
 		adr2.setPays("france");
-		adr2.setCompte(ut1);
+//		adr2.setCompte(ut1);
 		adr2 = adresseRepo.save(adr2);
 
 		
@@ -161,7 +160,7 @@ class CollectorProjectBootApplicationTests {
 	public void findAllByCompteId() {
 		System.out.println("testfindAllByCompte Début ###################");
 		
-		List<Adresse> adresses = adresseRepo.findAllByCompteId(1L);
+		List<Adresse> adresses = adresseRepo.findAllByUtilisateurId(1L);
 
 		assertEquals("acacias", adresses.get(0).getRue());
 

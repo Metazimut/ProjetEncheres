@@ -58,7 +58,7 @@ public class UtilisateurRestController {
 	@GetMapping("/{id}/adresses")
 	@JsonView(Views.ViewUtilisateur.class)
 	public List<Adresse> findAllByCompteId(@PathVariable Long id) {
-		List<Adresse> adresses = adresseRepo.findAllByCompteId(id);
+		List<Adresse> adresses = adresseRepo.findAllByUtilisateurId(id);
 		return adresses;
 	}
 	

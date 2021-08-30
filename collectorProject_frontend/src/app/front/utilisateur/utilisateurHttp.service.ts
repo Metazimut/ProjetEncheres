@@ -10,39 +10,28 @@ import {AppConfigService} from "../../app-config.service";
 })
 export class UtilisateurHttpService {
 
-  utilisateurs: Array<Utilisateur> = new Array<Utilisateur>();
-
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.load();
-  }
-
-  findAll(): Array<Utilisateur> {
-    return this.utilisateurs;
+    // this.load();
   }
 
   findById(id: number): Observable<Utilisateur> {
     return this.http.get<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
-  create(utilisateur: Utilisateur) {
-    this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur).subscribe(response => {
-      this.load();
-    }, error => console.log(error));
+  create(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur);
   }
 
-  modify(utilisateur: Utilisateur) {
-    this.http.put<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(response => {
-      this.load();
-    }, error => console.log(error));
+  modify(utilisateur: Utilisateur): Observable<Utilisateur>{
+    return this.http.put<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur);
   }
 
   deleteById(id: number): Observable<void> {
     return this.http.delete<void>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
-  load() {
-    this.http.get<Array<Utilisateur>>(this.appConfigService.backEndUrl + "utilisateur/").subscribe(response => {
-      this.utilisateurs = response;
+  load(utilisateur:Utilisateur) {
+    this.http.get<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + utilisateur.id).subscribe(response => {
     }, error => console.log(error));
   }
 }

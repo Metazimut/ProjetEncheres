@@ -26,20 +26,16 @@ export class AdresseHttpService {
     return this.http.get<Adresse>(this.appConfigService.backEndUrl + "adresse/" + id);
   }
 
-  findAllByCompteId(id: number): Observable<Array<Adresse>> {
+  findAllByUtilisateurId(id: number): Observable<Array<Adresse>> {
     return this.http.get<Array<Adresse>>(this.appConfigService.backEndUrl + "utilisateur/" + id+"/adresses/");
   }
 
-  create(adresse: Adresse) {
-    this.http.post<Adresse>(this.appConfigService.backEndUrl + "adresse/", adresse).subscribe(response => {
-      this.load();
-    }, error => console.log(error));
+  create(adresse: Adresse): Observable<Adresse> {
+    return this.http.post<Adresse>(this.appConfigService.backEndUrl + "adresse/", adresse);
   }
 
-  modify(adresse: Adresse) {
-    this.http.put<Adresse>(this.appConfigService.backEndUrl + "adresse/" + adresse.id, adresse).subscribe(response => {
-      this.load();
-    }, error => console.log(error));
+  modify(adresse: Adresse): Observable<Adresse> {
+    return this.http.put<Adresse>(this.appConfigService.backEndUrl + "adresse/" + adresse.id, adresse);
   }
 
   deleteById(id: number): Observable<void> {
