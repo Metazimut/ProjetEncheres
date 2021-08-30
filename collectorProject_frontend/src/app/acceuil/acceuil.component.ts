@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AcceuilService} from "./acceuil.service";
 import {Publication} from "../model/publication";
 import {Categorie} from "../model/categorie";
+declare var jQuery:any;
+
 
 @Component({
   selector: 'app-acceuil',
@@ -11,11 +13,19 @@ import {Categorie} from "../model/categorie";
 export class AcceuilComponent implements OnInit {
 
   constructor(private accueilService:AcceuilService) {
-    this.findAllCategories();
     this.findAllPublications();
+    this.findAllCategories();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    if (jQuery(".selectpicker").length != 0) {
+      setTimeout(function () {
+        jQuery(".selectpicker").selectpicker('refresh');   // refresh the selectpicker with fetched courses
+      }, 1000);
+    }
   }
 
   findAllPublications(){

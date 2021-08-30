@@ -19,12 +19,14 @@ export class AcceuilService {
   findAllPublication() {
     this.http.get<Array<Publication>>(this.chemin + "publication/").subscribe(response => {
       this.publications = response;
+      console.log(response);
     }, error => console.log(error));
   }
 
   findAllCategorie() {
     this.http.get<Array<Categorie>>(this.chemin + "categorie/").subscribe(response => {
       this.categories = response;
+      console.log(response);
     }, error => console.log(error));
   }
 }
