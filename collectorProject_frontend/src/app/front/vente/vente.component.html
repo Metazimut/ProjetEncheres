@@ -7,6 +7,11 @@
   <div class="loadimage"><input type="file" class="form-control-file border"></div>
   </div>
 
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose file</label>
+  </div>
+
   <div class="card">
   <form action="/action_page.php" class="was-validated">
     <div class="form-group">
@@ -32,8 +37,8 @@
       <label for="description">Description :</label>
       <textarea class="form-control" rows="5" id="description" placeholder="Ajouter une description" name="description" required></textarea>
       <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#demo" class="text-danger" class="btn btn-link">?</button><div id="demo" class="collapse">
-        Une description précise de votre article insitera de nouveaux participant à encherir</div>
+      <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#filldescription" class="text-danger" class="btn btn-link">?</button><div id="filldescription" class="collapse">
+       Votre description doit contenir une description fidèle de votre article ainsi que son année de fabrication</div>
       </div>
     </div>
   </form>
@@ -52,16 +57,6 @@
           <option value="Abimé">Abimé</option>
           <option value="pp">Pour pièces</option>
         </select>
-      </form>
-      <form action="/action_page.php">
-        <div class="form-group">
-          <label for="annee">Année de fabrication :</label>
-          <input type="email" class="form-control" id="annee" placeholder="Année de fabricattion" name="email">
-        </div>
-        <div class="form-group">
-          <label for="annee2">Année d'achat :</label>
-          <input type="password" class="form-control" id="annee2" placeholder="Année d'achat" name="pswd">
-        </div>
       </form>
 
       <form action="/action_page.php" class="was-validated">
