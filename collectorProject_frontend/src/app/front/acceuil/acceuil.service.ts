@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AppConfigService} from "../app-config.service";
-import {Publication} from "../model/publication";
-import {Categorie} from "../model/categorie";
+import {AppConfigService} from "../../app-config.service";
+import {Publication} from "../../model/publication";
+import {Categorie} from "../../model/categorie";
 
 @Injectable({
   providedIn: 'root'

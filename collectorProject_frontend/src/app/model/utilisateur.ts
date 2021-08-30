@@ -16,7 +16,7 @@ export class Utilisateur extends Compte {
 
 
   constructor(id?: number, version?: number, nom?: string, prenom?: string, email?: string, dateCreation?: Date, identifiant?: string, mdp?: string, profilImg?: string, pseudo?: string, moyenPaiement?: string, fields?: Array<Field>, commentaires?: Array<Commentaire>, publications?: Array<Publication>, encheres?: Array<ParticipationEnchere>, envoi?: Array<Message>, reçoit?: Array<Message>) {
-    super(id, version, nom, prenom, email, dateCreation, identifiant, mdp, profilImg, pseudo);
+    super(id, version, nom, prenom, email, dateCreation, identifiant, mdp, profilImg);
     this.moyenPaiement = moyenPaiement;
     this.fields = fields;
     this.commentaires = commentaires;

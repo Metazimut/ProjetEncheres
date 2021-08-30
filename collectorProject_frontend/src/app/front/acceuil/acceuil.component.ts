@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AcceuilService} from "./acceuil.service";
-import {Publication} from "../model/publication";
-import {Categorie} from "../model/categorie";
+import {Publication} from "../../model/publication";
+import {Categorie} from "../../model/categorie";
 declare var jQuery:any;
 
 

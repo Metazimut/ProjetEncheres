@@ -37,6 +37,12 @@ public class Utilisateur extends Compte {
 	
 	@OneToMany(mappedBy = "recepteur")
 	private List<Message> reçoit = new ArrayList<Message>();
+
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Adresse> adresses = new ArrayList<Adresse>();
+
+
+
 	
 	public Utilisateur() {
 		super();

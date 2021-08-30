@@ -63,13 +63,8 @@ public abstract class Compte {
 	@Column(name = "profilImg")
 	@JsonView(Views.ViewCommon.class)
 	private String profilImg;
-	
-	@Column(name = "pseudo")
-	@JsonView(Views.ViewCommon.class)
-	private String pseudo;
 
-	@OneToMany(mappedBy = "compte")
-	private List<Adresse> adresses = new ArrayList<Adresse>();
+
 
 	
 	public Compte() {
@@ -81,7 +76,6 @@ public abstract class Compte {
 	public Compte(String nom, List<Adresse> adresses) {
 		super();
 		this.nom = nom;
-		this.adresses = adresses;
 	}
 
 
@@ -187,35 +181,13 @@ public abstract class Compte {
 
 
 
-	public String getPseudo() {
-		return pseudo;
-	}
-
-
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-
-
-	public List<Adresse> getAdresses() {
-		return adresses;
-	}
-
-
-
-	public void setAdresses(List<Adresse> adresses) {
-		this.adresses = adresses;
-	}
-
 
 
 	@Override
 	public String toString() {
 		return "Compte [id=" + id + ", version=" + version + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
 				+ ", dateCreation=" + dateCreation + ", identifiant=" + identifiant + ", mdp=" + mdp + ", profilImg="
-				+ profilImg + ", pseudo=" + pseudo + ", adresses=" + adresses + "]";
+				+ profilImg + "]";
 	}
 
 
