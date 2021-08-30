@@ -26,6 +26,8 @@ public class Views {
 	public static class ViewConnetion extends ViewCommon {}
 
 	public static class ViewCommentaire extends ViewCommon {}
+	
+	public static class ViewAchat extends ViewCommon {}
 
 	
 }

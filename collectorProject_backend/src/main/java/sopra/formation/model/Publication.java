@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -45,7 +46,7 @@ public class Publication {
 	@Column(name = "prixActuel")
 	@JsonView(Views.ViewCommon.class)
 	private Long prixActuel;
-	@Column(name = "dataEcheance")
+	@Column(name = "dateEcheance")
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@JsonView(Views.ViewCommon.class)
@@ -59,8 +60,10 @@ public class Publication {
 	@JsonView(Views.ViewPublication.class)
 	private Categorie categorie;
 	@OneToMany(mappedBy = "publication")
+	@JsonIgnore
 	private List<ParticipationEnchere> encheres = new ArrayList<ParticipationEnchere>();
 	@OneToMany(mappedBy = "publication")
+	@JsonIgnore
 	private List<Commentaire> commentaires = new ArrayList<Commentaire>();
 	
 	public Publication() {

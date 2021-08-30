@@ -12,4 +12,8 @@ import sopra.formation.model.Utilisateur;
 public interface IParticipationEnchereRepository extends JpaRepository<ParticipationEnchere, Long> {
 	@Query("select e from ParticipationEnchere e where e.publication = :publication and e.utilisateur = :utilisateur")
 	List<ParticipationEnchere> findAllEncheresByPublicationAndUtilisateur(@Param("publication") Publication publication, @Param("utilisateur") Utilisateur utilisateur);
+
+	@Query("select e from ParticipationEnchere e where e.publication = :publication")
+	List<ParticipationEnchere> findAllByPublication(@Param("publication") Publication publication);
+
 }
