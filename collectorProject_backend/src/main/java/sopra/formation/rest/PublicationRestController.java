@@ -35,6 +35,12 @@ public class PublicationRestController {
 	public List<Publication> findAll() {
 		return publicationRepo.findAll();
 	}
+	
+	@GetMapping("/nom/{nom}")
+	@JsonView(Views.ViewPublication.class)
+	public List<Publication> findAllPublicationByNom(@PathVariable String nom) {
+		return publicationRepo.findAllPublicationByNom(nom);
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewPublication.class)

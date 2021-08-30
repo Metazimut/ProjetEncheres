@@ -17,6 +17,9 @@ public interface IPublicationRepository extends JpaRepository<Publication, Long>
 	List<Publication> findAllByPublicateur(Compte compte);
 	Publication findByEncheres(ParticipationEnchere enchere);
 	
+	@Query("select p from Publication p where p.nom = :nom")
+	List<Publication> findAllPublicationByNom(@Param("nom") String nom);
+	
 
 	@Query("select p from Publication p where p.id = :id")
 	Optional<Publication> findById(@Param("id") Long id);

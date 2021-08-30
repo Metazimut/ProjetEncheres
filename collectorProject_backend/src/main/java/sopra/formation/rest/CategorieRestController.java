@@ -35,6 +35,12 @@ public class CategorieRestController {
 	public List<Categorie> findAll() {
 		return categorieRepo.findAll();
 	}
+	
+	@GetMapping("/nom/{nom}")
+	@JsonView(Views.ViewPublication.class)
+	public List<Categorie> findAllCategorieByNom(@PathVariable String nom) {
+		return categorieRepo.findAllCategorieByNom(nom);
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCategorie.class)
