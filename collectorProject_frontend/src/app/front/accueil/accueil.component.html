@@ -1,7 +1,7 @@
 <h4 *ngIf="publicationsByNom == null">Last Publications</h4>
 <h4 *ngIf="publicationsByNom != null">Wanted Publication(s)</h4>
 <div>
-  <select class="selectpicker" data-live-search="true" [(ngModel)]="nomPublication">
+  <select class="selectpicker" data-live-search="true" title="Choose publication" [(ngModel)]="nomPublication">
     <option *ngFor="let item of listPublications()">{{item.nom}}</option>
   </select>
   <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllPublicationsByNom(nomPublication)">Search</button>
@@ -42,7 +42,7 @@
 <h4 *ngIf="publicationsByNom == null">Top Categories</h4>
 <h4 *ngIf="publicationsByNom != null">Wanted Category</h4>
 <div>
-  <select class="selectpicker" data-live-search="true" [(ngModel)]="nomCategorie">
+  <select class="selectpicker" data-live-search="true" title="Choose categorie" [(ngModel)]="nomCategorie">
     <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
   </select>
   <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllCategoriesByNom(nomCategorie)">Search</button>
