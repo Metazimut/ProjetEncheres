@@ -53,7 +53,7 @@ public class Publication {
 	private Date dateEcheance;
 	@ManyToOne
 	@JoinColumn(name = "publicateur_id")
-	@JsonView(Views.ViewPublication.class)
+	@JsonView({Views.ViewPublication.class, Views.ViewAchat.class})
 	private Utilisateur publicateur;
 	@ManyToOne
 	@JoinColumn(name = "categorie_id")

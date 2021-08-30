@@ -16,10 +16,10 @@ import {RouterModule} from "@angular/router";
     AcceuilComponent,
     ConnectionComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule
+    ]
 })
 export class FrontModule { }

@@ -21,5 +21,4 @@ public interface IPublicationRepository extends JpaRepository<Publication, Long>
 	@Query("select p from Publication p where p.id = :id")
 	Optional<Publication> findById(@Param("id") Long id);
 	
-	//récup les propositions d'encheres
 }
