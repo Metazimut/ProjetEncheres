@@ -1,38 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Par défaut1 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/accueil']">Acceuil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Par défaut2</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown exemple
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+        <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Achat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">exemple disable</a>
+        <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Vente</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button type="button" class="btn btn-primary">Connect</button>
-      <button type="button" class="btn btn-primary">Sign in</button>
-    </form>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="!isConnected()" class="nav-item">
+        <button [routerLink]="['/connection']" class="btn btn-dark btn-lg active">Se connecter</button>
+      </li>
+      <li *ngIf="isConnected()" class="nav-item">
+        <button (click)="Disconnect()" [routerLink]="['/accueil']" class="btn btn btn-dark btn-lg active">Se déconnecter</button>
+      </li>
+    </ul>
   </div>
 </nav>
 
+<div class="container-fluid">
   <router-outlet></router-outlet>
-
+</div>

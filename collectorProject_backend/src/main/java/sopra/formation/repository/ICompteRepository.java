@@ -7,10 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopra.formation.model.Admin;
-import sopra.formation.model.Commentaire;
 import sopra.formation.model.Compte;
-import sopra.formation.model.ParticipationEnchere;
-import sopra.formation.model.Publication;
 import sopra.formation.model.Utilisateur;
 
 public interface ICompteRepository extends JpaRepository<Compte, Long> {
@@ -35,4 +32,7 @@ public interface ICompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Query("select distinct c from Compte c left join fetch c.adresses a where a.codePostal = :codePostal and a.pays = :pays")
 	List<Compte> findAllByCodePostal(@Param("codePostal") String codePostal, @Param("pays") String pays);
+	
+	@Query("select c from Compte c where c.email = :email and c.mdp = :mdp")
+	Optional<Compte> findByEmailAndMotDePasse(@Param("email") String email, @Param("mdp") String mdp);
 }

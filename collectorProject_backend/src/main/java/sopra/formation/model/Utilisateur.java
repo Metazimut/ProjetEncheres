@@ -32,7 +32,7 @@ public class Utilisateur extends Compte {
 	@OneToMany(mappedBy = "utilisateur")
 	private List<ParticipationEnchere> encheres = new ArrayList<ParticipationEnchere>();
 	
-	@OneToMany(mappedBy = "envoyeur")
+	@OneToMany(mappedBy = "emetteur")
 	private List<Message> envoi = new ArrayList<Message>();	
 	
 	@OneToMany(mappedBy = "recepteur")
