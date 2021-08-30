@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
  import { AchatComponent } from './achat/achat.component';
 import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
 import {FormsModule} from "@angular/forms";
-import {AcceuilComponent} from "./acceuil/acceuil.component";
+import {AccueilComponent} from "./accueil/accueil.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
 
@@ -13,7 +13,7 @@ import {RouterModule} from "@angular/router";
   declarations: [
     AchatComponent,
     UtilisateurComponent,
-    AcceuilComponent,
+    AccueilComponent,
     ConnectionComponent,
   ],
     imports: [

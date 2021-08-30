@@ -1,10 +1,11 @@
 <h4>Last Publications</h4>
 <div>
-  <span>Search : </span>
   <select class="selectpicker" data-live-search="true">
     <option *ngFor="let item of listPublications()">{{item.nom}}</option>
   </select>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 </div>
+<br>
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleCaptions"  *ngFor="let item of listPublications();let index = index" [attr.data-slide-to]="index"></li>
@@ -29,11 +30,12 @@
 
 <h4>Top Categories</h4>
 <div>
-  <span>Search : </span>
   <select class="selectpicker" data-live-search="true">
     <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
   </select>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 </div>
+<br>
 <div class="raw card-group">
   <div *ngFor="let cat of listCategories().slice(-3)" class="col-4">
     <div class="card">
