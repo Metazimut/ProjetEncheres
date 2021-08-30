@@ -11,17 +11,19 @@ import {FrontModule} from "./front/front.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    FrontModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        FrontModule,
+        HttpClientModule
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
