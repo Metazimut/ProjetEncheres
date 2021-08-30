@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {UtilisateurComponent} from "./front/utilisateur/utilisateur.component";
 import {AcceuilComponent} from "./front/acceuil/acceuil.component";
 import {ConnectionComponent} from "./front/connection/connection.component";
+import {AchatComponent} from "./front/achat/achat.component";
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "connection", component: ConnectionComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"},
   //{path: "planning/:id", component: PlanningComponent},
+  {path: "achat", component: AchatComponent}
 
 ];
 
