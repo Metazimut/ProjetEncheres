@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AcceuilService} from "./acceuil.service";
+import {AccueilService} from "./accueil.service";
 import {Publication} from "../../model/publication";
 import {Categorie} from "../../model/categorie";
 declare var jQuery:any;
@@ -7,12 +7,12 @@ declare var jQuery:any;
 
 @Component({
   selector: 'app-acceuil',
-  templateUrl: './acceuil.component.html',
-  styleUrls: ['./acceuil.component.scss']
+  templateUrl: './accueil.component.html',
+  styleUrls: ['./accueil.component.scss']
 })
-export class AcceuilComponent implements OnInit {
+export class AccueilComponent implements OnInit {
 
-  constructor(private accueilService:AcceuilService) {
+  constructor(private accueilService:AccueilService) {
     this.findAllPublications();
     this.findAllCategories();
   }

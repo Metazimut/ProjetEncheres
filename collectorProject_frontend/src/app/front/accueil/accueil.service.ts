@@ -7,7 +7,7 @@ import {Categorie} from "../../model/categorie";
 @Injectable({
   providedIn: 'root'
 })
-export class AcceuilService {
+export class AccueilService {
   publications: Array<Publication> = new Array<Publication>();
   categories: Array<Categorie> = new Array<Categorie>();
   chemin: string;

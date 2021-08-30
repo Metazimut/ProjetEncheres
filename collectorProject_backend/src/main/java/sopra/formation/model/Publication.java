@@ -45,7 +45,7 @@ public class Publication {
 	@Column(name = "prixActuel")
 	@JsonView(Views.ViewCommon.class)
 	private Long prixActuel;
-	@Column(name = "dataEcheance")
+	@Column(name = "dateEcheance")
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@JsonView(Views.ViewCommon.class)

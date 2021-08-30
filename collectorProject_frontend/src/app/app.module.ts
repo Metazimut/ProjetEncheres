@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { AcceuilComponent } from './front/acceuil/acceuil.component';
+import { AccueilComponent } from './front/accueil/accueil.component';
 import { ConnectionComponent } from './front/connection/connection.component';
 import {FrontModule} from "./front/front.module";
 
