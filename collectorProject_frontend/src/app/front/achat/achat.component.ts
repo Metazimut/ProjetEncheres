@@ -39,6 +39,7 @@ export class AchatComponent implements OnInit {
       this.achatService.findById(params.id).subscribe(ach => {
         this.achatForm.publication=ach.publication;
         this.achatForm.commentaires=ach.commentaires;
+        console.log(this.achatForm.commentaires);
         this.achatForm.encheres=ach.encheres;
         });
       })
@@ -76,5 +77,9 @@ private timeDiff(value: Date): string{
     this.hoursToDday = Math.floor((timeDifference) / (milliSecondsInASecond * minutesInAnHour * SecondsInAMinute) % hoursInADay);
     this.daysToDday = Math.floor((timeDifference) / (milliSecondsInASecond * minutesInAnHour * SecondsInAMinute * hoursInADay));
   }
+
+
+
+
 
 }
