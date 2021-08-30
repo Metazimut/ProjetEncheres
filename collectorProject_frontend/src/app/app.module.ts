@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { AcceuilComponent } from './front/acceuil/acceuil.component';
+import { ConnectionComponent } from './front/connection/connection.component';
 import {FrontModule} from "./front/front.module";
 
 
@@ -16,8 +18,8 @@ import {FrontModule} from "./front/front.module";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    FrontModule
+    FrontModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

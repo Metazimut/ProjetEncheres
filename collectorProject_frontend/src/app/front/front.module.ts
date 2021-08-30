@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 // import { AchatComponent } from './achat/achat.component';
 import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
 import {FormsModule} from "@angular/forms";
+import {AcceuilComponent} from "./acceuil/acceuil.component";
+import {ConnectionComponent} from "./connection/connection.component";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -10,10 +13,13 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     // AchatComponent,
     UtilisateurComponent,
+    AcceuilComponent,
+    ConnectionComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
   ]
 })
 export class FrontModule { }
