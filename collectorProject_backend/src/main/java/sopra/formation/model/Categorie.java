@@ -1,9 +1,12 @@
 package sopra.formation.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -23,6 +26,10 @@ public class Categorie {
 	private String categorieNom;
 	@JsonView(Views.ViewCommon.class)
 	private String imgCat;
+	@OneToMany(mappedBy = "categorie")
+	@JsonView(Views.ViewCategorieWithPublication.class)
+	private List<Publication> publications;
+
 	
 	public Categorie() {
 		super();

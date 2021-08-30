@@ -2,7 +2,7 @@
 <h4 *ngIf="publicationsByNom != null">Wanted Publication(s)</h4>
 <div>
   <select class="selectpicker" data-live-search="true" title="Choose publication" [(ngModel)]="nomPublication">
-    <option *ngFor="let item of listPublications()">{{item.nom}}</option>
+    <option *ngFor="let item of listPublicationsNom()">{{item}}</option>
   </select>
   <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllPublicationsByNom(nomPublication)">Search</button>
 </div>
@@ -26,10 +26,10 @@
     </a>
   </div>
 <div *ngIf="publicationsByNom != null" class="raw card-group">
-  <div *ngFor="let cat of publicationsByNom" class="col-4">
-    <div class="card card-body h-100">
+  <div *ngFor="let cat of publicationsByNom" class="col-md-4 clearfix d-none d-md-block">
+    <div class="card mb-2">
       <p class="card-title text-center">{{cat.nom}}</p>
-      <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
+      <a class="text-center"[routerLink]="['/achat/'+cat.id]">
         <img class="img-fluid img-thumbnail" alt="Responsive image" [src]='["../../assets/"+cat.img]'>
       </a>
     </div>
@@ -39,8 +39,8 @@
 <br>
 <br>
 
-<h4 *ngIf="publicationsByNom == null">Top Categories</h4>
-<h4 *ngIf="publicationsByNom != null">Wanted Category</h4>
+<h4 *ngIf="categorieByNom == null">Top Categories</h4>
+<h4 *ngIf="categorieByNom != null">Wanted Category</h4>
 <div>
   <select class="selectpicker" data-live-search="true" title="Choose categorie" [(ngModel)]="nomCategorie">
     <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
@@ -49,8 +49,8 @@
 </div>
 <br>
 <div *ngIf="categorieByNom == null" class="raw card-group">
-  <div *ngFor="let cat of listCategories().slice(-3)" class="col-4">
-    <div class="card">
+  <div *ngFor="let cat of listCategories().slice(-3)" class="col-md-4 clearfix d-none d-md-block">
+    <div class="card mb-2">
       <p class="card-title text-center">{{cat.categorieNom}}</p>
       <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
         <img class="img-fluid img-thumbnail rounded-circle"  [src]='["../../assets/"+cat.imgCat]'>
