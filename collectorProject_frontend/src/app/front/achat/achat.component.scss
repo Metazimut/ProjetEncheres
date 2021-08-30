@@ -11,9 +11,11 @@ img {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column; }
+
 @media screen and (max-width: 996px) {
   .preview {
-    margin-bottom: 20px; } }
+    margin-bottom: 20px;
+    } }
 
 .preview-pic {
   -webkit-box-flex: 1;
@@ -23,7 +25,9 @@ img {
 
 .preview-thumbnail.nav-tabs {
   border: none;
-  margin-top: 15px; }
+  margin-top: 15px;
+  margin-bottom: 30%;
+  }
 .preview-thumbnail.nav-tabs li {
   width: 18%;
   margin-right: 2.5%; }
@@ -155,3 +159,34 @@ img {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1); } }
+
+.valider {
+  background: #ff9f1a;
+}
+
+.comments {
+  margin-top: 20px;
+  background: #eee;
+  padding: 3em;
+  line-height: 1.5em;
+  border:solid 1px;
+  border: outset #C4C8CA;
+  border-radius: 10px;
+  max-width: 1350px;
+margin-right:auto;
+  margin-left:auto;
+
+}
+
+.caroussel {
+  max-width: 1200px;
+  margin-top:50px;
+margin-right:auto;
+  margin-left:auto;
+
+}
+
+
+.titre_centre {
+  margin-left: 28%;
+}

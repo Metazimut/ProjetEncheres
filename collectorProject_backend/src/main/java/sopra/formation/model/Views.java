@@ -22,8 +22,12 @@ public class Views {
 	public static class ViewField extends ViewCommon {}
 	
 	public static class ViewMessage extends ViewCommon {}
+	
+	public static class ViewConnetion extends ViewCommon {}
 
 	public static class ViewCommentaire extends ViewCommon {}
+	
+	public static class ViewAchat extends ViewCommon {}
 
 	
 }
