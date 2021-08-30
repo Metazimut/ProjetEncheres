@@ -54,6 +54,7 @@ public class PublicationRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
+	
 
 	@PostMapping("")
 	public Publication create(@RequestBody Publication publication) {
