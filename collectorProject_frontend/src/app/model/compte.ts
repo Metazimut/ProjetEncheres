@@ -8,11 +8,11 @@ export class Compte {
   identifiant:string;
   mdp:string;
   profilImg:string;
-  pseudo:string;
+
 
 
   constructor(id?: number, version?: number, nom?: string, prenom?: string, email?: string, dateCreation?: Date,
-              identifiant?: string, mdp?: string, profilImg?: string, pseudo?: string) {
+              identifiant?: string, mdp?: string, profilImg?: string) {
     this.id = id;
     this.version = version;
     this.nom = nom;
@@ -22,6 +22,5 @@ export class Compte {
     this.identifiant = identifiant;
     this.mdp = mdp;
     this.profilImg = profilImg;
-    this.pseudo = pseudo;
   }
 }

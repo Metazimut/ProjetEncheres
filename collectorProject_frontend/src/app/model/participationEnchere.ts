@@ -1,4 +1,4 @@
-import {Utilisateur} from "./Utilisateur";
+import {Utilisateur} from "./utilisateur";
 import {Publication} from "./publication";
 
 export class ParticipationEnchere {

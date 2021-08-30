@@ -8,5 +8,5 @@ import sopra.formation.model.Adresse;
 import sopra.formation.model.Compte;
 
 public interface IAdresseRepository extends JpaRepository<Adresse, Long> {
-	List<Adresse> findAllByCompteId(Long id);
+	List<Adresse> findAllByUtilisateurId(Long id);
 }
