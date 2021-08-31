@@ -7,12 +7,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { AccueilComponent } from './front/accueil/accueil.component';
 import { ConnectionComponent } from './front/connection/connection.component';
 import {FrontModule} from "./front/front.module";
+import { AdminComponent } from './front/admin/admin.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
