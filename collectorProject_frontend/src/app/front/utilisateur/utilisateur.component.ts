@@ -6,6 +6,7 @@ import {AdresseHttpService} from "../adresse/adresseHttp.service";
 import {ActivatedRoute} from "@angular/router";
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
+import {SessionService} from "../../session.service";
 
 @Component({
   selector: 'app-utilisateur',
@@ -27,7 +28,7 @@ export class UtilisateurComponent implements OnInit {
   //
   // });
 
-  constructor(private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,private adresseService: AdresseHttpService,private http:HttpClient) {
+  constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,private adresseService: AdresseHttpService,private http:HttpClient) {
     this.utilisateurForm.profilImg=null;
   }
 
@@ -35,6 +36,8 @@ export class UtilisateurComponent implements OnInit {
     this.route.params.subscribe(params => {
       if(params.id) {
         this.utilisateurForm.id = params.id;
+      } else {
+        this.utilisateurForm.id = this.sessionService.user.utilisateur.id;
       }
       this.loadUtilisateur();
     })

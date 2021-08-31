@@ -22,10 +22,6 @@ export class AppComponent {
       return this.sessionService.type == type;
     }
 
-    hisId() : number {
-      return this.sessionService.user.utilisateur.id;
-    }
-
     Disconnect() {
       this.sessionService.user = null;
       this.sessionService.type = null;
