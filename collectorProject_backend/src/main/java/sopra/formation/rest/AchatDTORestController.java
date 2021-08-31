@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,6 +20,7 @@ import sopra.formation.model.Categorie;
 import sopra.formation.model.Commentaire;
 import sopra.formation.model.ParticipationEnchere;
 import sopra.formation.model.Publication;
+import sopra.formation.model.Utilisateur;
 import sopra.formation.model.Views;
 import sopra.formation.repository.ICategorieRepository;
 import sopra.formation.repository.ICommentaireRepository;
@@ -82,9 +85,28 @@ public class AchatDTORestController {
 			
 			return publis;
 			
-			
-			
-			
 		}
 
+		
+		@PostMapping("/{id}/commentaire")
+		@JsonView(Views.ViewAchat.class)
+		public Commentaire create(@RequestBody Commentaire comm) {
+			comm = commRepo.save(comm);
+			return comm;
+		}
+		
+		@PostMapping("/{id}/enchere")
+		@JsonView(Views.ViewAchat.class)
+		public ParticipationEnchere create(@RequestBody ParticipationEnchere ench) {
+			ench = enchereRepo.save(ench);
+			return ench;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 }

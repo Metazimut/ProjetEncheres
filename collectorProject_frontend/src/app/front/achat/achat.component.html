@@ -34,13 +34,13 @@
 <!--          Pour ajouter une note-->
           <div class="rating">
             <div class="stars">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
+              <span class="fa fa-star checked" *ngIf="pourcentageRecomm>=10"></span><span class="fa fa-star" *ngIf="pourcentageRecomm<10"></span>
+              <span class="fa fa-star checked" *ngIf="pourcentageRecomm>=35"></span><span class="fa fa-star" *ngIf="pourcentageRecomm<35"></span>
+              <span class="fa fa-star checked" *ngIf="pourcentageRecomm>=50"></span><span class="fa fa-star" *ngIf="pourcentageRecomm<50"></span>
+              <span class="fa fa-star checked" *ngIf="pourcentageRecomm>=75"></span><span class="fa fa-star" *ngIf="pourcentageRecomm<75"></span>
+              <span class="fa fa-star checked" *ngIf="pourcentageRecomm>=92"></span><span class="fa fa-star" *ngIf="pourcentageRecomm<92"></span>
             </div>
-            <span class="review-no">{{votes}} votes</span>
+            <span class="review-no">{{recommandation}} votes</span>
           </div>
 
 
@@ -49,15 +49,16 @@
           <h4 class="price">Enchere actuelle : <span>{{achatForm.publication.prixActuel}}€</span></h4>
 
 <!--          Ajouter une recommandation-->
-                    <p class="vote"><strong>{{pourcentageRecomm}}%</strong> de nos enchérisseurs recommandent ce produit ! <strong>({{recommandation}} votes)</strong></p>
+                    <p class="vote"><strong>{{pourcentageRecomm}}%</strong> de nos enchérisseurs recommandent ce produit !</p>
 
 
 
           <div class="action">
             <button class="add-to-cart btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Enchérir</button>
 
-<!--            Bouton Favoris-->
-            <button class="like btn btn-default" type="button" (click)="voter()"><span class="fa fa-heart"></span></button>
+<!--            Bouton Like/Dislike-->
+            <button class="like btn btn-default" type="button" [disabled]="clicked" (click)="voterPour(); clicked=true;"><span class="fa fa-heart"></span></button>
+            <button class="dislike btn btn-default" type="button" [disabled]="clicked" (click)="voterContre(); clicked=true;"><span class="fa fa-thumbs-down"></span></button>
           </div>
           <br>
           <span>Fin de l'enchère dans : <span *ngIf="(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>{{countdown}}</b></span><span *ngIf="!(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>Enchère terminée</b></span></span>
@@ -102,7 +103,7 @@
           <div class="row">
 
             <div class="col-md-4" *ngFor="let i of [1,2,3]">
-              <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+              <a (click)="clicked=false" [routerLink]="['/achat/'+publisSimilaires[i].id]">
               <div class="cardCaroussel card mb-2">
                 <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
                      alt="Card image cap">
@@ -123,7 +124,7 @@
           <div class="row">
 
             <div class="col-md-4" *ngFor="let i of [4,5,6]">
-            <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+            <a (click)="clicked=false" [routerLink]="['/achat/'+publisSimilaires[i].id]">
                 <div class="cardCaroussel card mb-2">
 
                   <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
@@ -147,7 +148,7 @@
           <div class="row">
 
             <div class="col-md-4" *ngFor="let i of [7,8,9]">
-              <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+              <a (click)="clicked=false" [routerLink]="['/achat/'+publisSimilaires[i].id]">
               <div class="cardCaroussel card mb-2">
                 <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
                      alt="Card image cap">
@@ -188,7 +189,7 @@
 <!--        TODO trier en fonction des dates de commentaires-->
         <div *ngFor="let comm of achatForm.commentaires" class="comment mt-4 text-justify"> <img src="{{comm.utilisateur.profilImg}}" alt="" class="rounded-circle" width="40" height="40">
 
-          <h4>{{comm.utilisateur.identifiant}}</h4> <span>- {{comm.utilisateur.dateCreation | date: 'dd/MM/yyyy'}}</span> <br>
+          <h4>{{comm.utilisateur.identifiant}}</h4> <span>- {{comm.dateCreation | date: 'dd/MM/yyyy'}}</span> <br>
           <p>{{comm.message}}</p>
          </div>
 
@@ -200,7 +201,7 @@
       <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
         <form id="algin-form">
           <div class="form-group">
-            <h4>Laisser un commentaire</h4> <label>Message</label> <textarea name="msg" id="commentaire" cols="50" rows="5" class="form-control" style="background-color: white; border: solid 1px gray; color:black"></textarea>
+            <h4>Laisser un commentaire</h4> <label>Message</label> <textarea name="msg" id="commentaire" cols="50" rows="5" class="form-control" style="background-color: white; border: solid 1px gray; color:black" [(ngModel)]="commentaireEnCours"></textarea>
           </div>
 
 <!--          <div class="form-group"> <label for="name">Name</label> <input type="text" name="name" id="fullname" class="form-control"> </div>-->
@@ -210,7 +211,7 @@
 <!--            <p class="text-secondary">If you have a <a href="#" class="alert-link">gravatar account</a> your address will be used to display your profile picture.</p>-->
 <!--          </div>-->
 
-          <div class="form-group"> <button type="button" id="post" class="btn" style="background-color: #C8A522"><b>Poster le commentaire</b></button> </div>
+          <div class="form-group"> <button type="button" id="post" class="btn" style="background-color: #C8A522" (click)="posterComm()"><b>Poster le commentaire</b></button> </div>
         </form>
       </div>
     </div>
@@ -219,21 +220,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -249,16 +235,18 @@
       </div>
       <div class="modal-body">
         <span>L'enchère actuelle est de : <b><span id="enchere">{{achatForm.publication.prixActuel}}</span><span>€</span></b></span><br>
-        <span>Entrez votre enchère :</span><br>
-        <input type="number" id="new_enchere" min="{{achatForm.publication.prixActuel+1}}" placeholder="Votre enchère" required="required" message="L'enchère est trop basse" [(ngModel)]="new_enchere"><span style="color:red;" *ngIf="new_enchere<=this.achatForm.publication.prixActuel"> Enchère trop basse</span>
+        <span *ngIf="confirm==false">Entrez votre enchère :</span><br>
+        <input *ngIf="confirm==false" type="number" id="new_enchere" min="{{achatForm.publication.prixActuel+1}}" placeholder="Votre enchère" required="required" message="L'enchère est trop basse" [(ngModel)]="new_enchere"><span style="color:red;" *ngIf="new_enchere<=this.achatForm.publication.prixActuel"> Enchère trop basse</span>
+        <h3 class="attention" *ngIf="confirm==true">Attention, vous allez sur-enchérir à hauteur de <u>{{new_enchere}}€</u>, êtes-vous sûr ?</h3>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="valider btn btn-primary" routerLink="['/achat/'+achatForm.pu]">Valider l'enchère</button>
+        <button *ngIf="confirm==false" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button><button *ngIf="confirm==true" type="button" class="btn btn-secondary" data-dismiss="modal" (click)="confirm=false">Annuler</button>
+        <button *ngIf="confirm==false" type="button" class="valider btn btn-primary" (click)="confirm=true">Enchérir</button><button *ngIf="confirm==true" type="button" class="valider btn btn-primary" data-dismiss="modal"  (click)="nouvelleEnchere()">Valider l'enchère</button>
       </div>
     </div>
   </div>
 </div>
+
 
 
 

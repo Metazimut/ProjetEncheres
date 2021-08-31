@@ -4,6 +4,8 @@ import {AppConfigService} from "../../app-config.service";
 import {Observable} from "rxjs";
 import {AchatDTO} from "../../model/achatDTO";
 import {Publication} from "../../model/publication";
+import {Commentaire} from "../../model/commentaire";
+import {ParticipationEnchere} from "../../model/participationEnchere";
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +24,15 @@ export class AchatHttpService {
     return this.http.get<Array<Publication>>(this.appConfigService.backEndUrl + "achat/categorie/"+ categorieID);
   }
 
-  // create(utilisateur: Utilisateur): Observable<Utilisateur> {
-  //   return this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur);
-  // }
-  //
+  createComm(id: number, commentaire: Commentaire): Observable<Commentaire> {
+    return this.http.post<Commentaire>(this.appConfigService.backEndUrl + "achat/" + id +"/commentaire", commentaire);
+  }
+
+  createEnch(id: number, enchere: ParticipationEnchere): Observable<ParticipationEnchere> {
+    return this.http.post<ParticipationEnchere>(this.appConfigService.backEndUrl + "achat/" + id +"/enchere", enchere);
+  }
+
+
   // modify(utilisateur: Utilisateur): Observable<Utilisateur>{
   //   return this.http.put<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur);
   // }
