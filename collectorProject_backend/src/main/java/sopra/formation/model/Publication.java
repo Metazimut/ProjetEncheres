@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -52,15 +53,17 @@ public class Publication {
 	private Date dateEcheance;
 	@ManyToOne
 	@JoinColumn(name = "publicateur_id")
-	@JsonView(Views.ViewPublication.class)
+	@JsonView({Views.ViewPublication.class, Views.ViewAchat.class})
 	private Utilisateur publicateur;
 	@ManyToOne
 	@JoinColumn(name = "categorie_id")
 	@JsonView(Views.ViewPublication.class)
 	private Categorie categorie;
 	@OneToMany(mappedBy = "publication")
+	@JsonIgnore
 	private List<ParticipationEnchere> encheres = new ArrayList<ParticipationEnchere>();
 	@OneToMany(mappedBy = "publication")
+	@JsonIgnore
 	private List<Commentaire> commentaires = new ArrayList<Commentaire>();
 	
 	public Publication() {

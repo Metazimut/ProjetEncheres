@@ -1,18 +1,19 @@
-<h4>Last Publications</h4>
+<h4 *ngIf="publicationsByNom == null">Last Publications</h4>
+<h4 *ngIf="publicationsByNom != null">Wanted Publication(s)</h4>
 <div>
-  <select class="selectpicker" data-live-search="true">
+  <select class="selectpicker" data-live-search="true" title="Choose publication" [(ngModel)]="nomPublication">
     <option *ngFor="let item of listPublications()">{{item.nom}}</option>
   </select>
-  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllPublicationsByNom(nomPublication)">Search</button>
 </div>
 <br>
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <div *ngIf="publicationsByNom == null" id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleCaptions"  *ngFor="let item of listPublications();let index = index" [attr.data-slide-to]="index"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let item of listPublications();let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
-        <img class="d-block img-fluid" [src]='["../../assets/"+item.img]' [alt]="item.nom" class="mx-auto d-block" width="350" height="350">
+        <img class="mx-auto d-block" [src]='["../../assets/"+item.img]' [alt]="item.nom" height="350">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -24,56 +25,46 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-<br>
-<br>
-
-<h4>Top Categories</h4>
-<div>
-  <select class="selectpicker" data-live-search="true">
-    <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
-  </select>
-  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-</div>
-<br>
-<div class="raw card-group">
-  <div *ngFor="let cat of listCategories().slice(-3)" class="col-4">
-    <div class="card">
-      <p class="card-title text-center">{{cat.categorieNom}}</p>
-      <a class="text-center"[routerLink]="['/categorie/'+cat.id]"><img [src]='["../../assets/"+cat.imgCat]'></a>
+<div *ngIf="publicationsByNom != null" class="raw card-group">
+  <div *ngFor="let cat of publicationsByNom" class="col-4">
+    <div class="card card-body h-100">
+      <p class="card-title text-center">{{cat.nom}}</p>
+      <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
+        <img class="img-fluid img-thumbnail" alt="Responsive image" [src]='["../../assets/"+cat.img]'>
+      </a>
     </div>
   </div>
 </div>
 
 <br>
-<br><br>
 <br>
 
-<!-- Footer -->
-<footer class="page-footer p-3 mb-2 bg-dark text-white">
-
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-      <li class="list-inline-item">
-        <h5 class="mb-1">Register for free</h5>
-      </li>
-      <li class="list-inline-item">
-        <a [routerLink]="['/inscription']" class="btn btn-primary">Sign up!</a>
-      </li>
-    </ul>
-    <!-- Call to action -->
-
+<h4 *ngIf="publicationsByNom == null">Top Categories</h4>
+<h4 *ngIf="publicationsByNom != null">Wanted Category</h4>
+<div>
+  <select class="selectpicker" data-live-search="true" title="Choose categorie" [(ngModel)]="nomCategorie">
+    <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
+  </select>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllCategoriesByNom(nomCategorie)">Search</button>
+</div>
+<br>
+<div *ngIf="categorieByNom == null" class="raw card-group">
+  <div *ngFor="let cat of listCategories().slice(-3)" class="col-4">
+    <div class="card">
+      <p class="card-title text-center">{{cat.categorieNom}}</p>
+      <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
+        <img class="img-fluid img-thumbnail rounded-circle"  [src]='["../../assets/"+cat.imgCat]'>
+      </a>
+    </div>
   </div>
-  <!-- Footer Elements -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a [routerLink]="['/accueil']"> MDBootstrap.com</a>
+</div>
+<div *ngIf="categorieByNom != null" class="raw card-group">
+  <div *ngFor="let cat of categorieByNom" class="col-4">
+    <div class="card card-body h-100">
+      <p class="card-title text-center">{{cat.categorieNom}}</p>
+      <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
+        <img class="img-fluid img-thumbnail" alt="Responsive image" [src]='["../../assets/"+cat.imgCat]'>
+      </a>
+    </div>
   </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+</div>

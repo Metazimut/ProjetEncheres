@@ -27,10 +27,10 @@ public class ParticipationEnchere {
 	private Long prixProposition;
 	@Column(name = "placeNb")
 	@JsonView(Views.ViewCommon.class)
-	private int placeNb;
+	private Integer placeNb;
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
-	@JsonView(Views.ViewParticipationEnchere.class)
+	@JsonView({Views.ViewParticipationEnchere.class,Views.ViewAchat.class})
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "publication_id")
