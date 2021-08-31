@@ -7,6 +7,11 @@ import {ActivatedRoute} from "@angular/router";
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../../session.service";
+import {ConnectionComponent} from "../connection/connection.component";
+import {ConnectionService} from "../connection/connection.service";
+import {UserDTO} from "../../model/UserDTO";
+
+
 
 @Component({
   selector: 'app-utilisateur',
@@ -18,18 +23,11 @@ export class UtilisateurComponent implements OnInit {
   utilisateurForm: Utilisateur = new Utilisateur();
   adresseForm: Array<Adresse> = new Array<Adresse>();
   profilImgTmp : string;
+  title = 'email-validation-tutorial';
+  userForm:UserDTO=new UserDTO();
 
-  // myForm = new FormGroup({
-  //
-  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-  //
-  //   file: new FormControl('', [Validators.required]),
-  //
-  //   fileSource: new FormControl('', [Validators.required])
-  //
-  // });
-
-  constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,private adresseService: AdresseHttpService,private http:HttpClient) {
+  constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,
+              private adresseService: AdresseHttpService,private http:HttpClient, private connexionService: ConnectionService) {
     this.utilisateurForm.profilImg=null;
   }
 
@@ -58,16 +56,21 @@ export class UtilisateurComponent implements OnInit {
   save() {
     if(this.verifyUtilisateurContent()){
       if (this.utilisateurForm.id) {
-        console.log("I have a id ")
         this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
           this.utilisateurForm = resp;
           window.location.replace("http://localhost:4200/accueil");
         });
       } else {
-        console.log("I was created ")
-        this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
-          this.utilisateurForm = resp;
-          window.location.replace("http://localhost:4200/accueil");
+        this.utilisateurService.findAllUtilisateurByEmail(this.utilisateurForm.email).subscribe(list => {
+          console.log("list "+list.length);
+          if(list.length==0) {
+            this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
+              this.connexion();
+              this.utilisateurForm = resp;
+            });
+          }else{
+            alert("cette adresse email est déjà utilisé");
+          }
         });
       }
       for (let i in this.adresseForm) {
@@ -133,6 +136,19 @@ export class UtilisateurComponent implements OnInit {
     }
   }
 
+  connexion() {
+    this.userForm.login=this.utilisateurForm.email;
+    this.userForm.password=this.utilisateurForm.mdp;
+    this.connexionService.authentification(this.userForm).subscribe(resp => {
+      this.userForm = resp;
+      this.sessionService.setUser(resp);
+      window.location.replace("http://localhost:4200/accueil");
+
+    }, error => {
+      alert("pas d'utilisateur trouvé")
+    });
+  }
+
   // onFileChange(event : any) {
   //   if (event.target.files.length > 0) {
   //
@@ -161,6 +177,7 @@ export class UtilisateurComponent implements OnInit {
   //
   //     })
   // }
+
 
 
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
  import { AchatComponent } from './achat/achat.component';
 import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
@@ -20,10 +20,11 @@ import {AdminComponent} from "./admin/admin.component";
     CategorieComponent,
     AdminComponent,
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule
+  ]
 })
 export class FrontModule { }
