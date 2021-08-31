@@ -1,1 +1,55 @@
-<p>categorie works!</p>
+  <div class="card-body text-center">
+    <h5>Catégorie : {{categorie.categorieNom}}</h5>
+    <img class="img-fluid img-thumbnail rounded-circle" [src]='["../../assets/"+categorie.imgCat]'>
+  </div>
+
+
+<div>
+  <h4 class="titre_centre">Publications trouvées pour cette catégorie :</h4>
+</div>
+<div class="row">
+  <div *ngFor="let cat of categorie.publications" class="col-md-4">
+    <div class="cardCaroussel card mb-2">
+      <h4 class="card-title text-center">{{cat.nom}}</h4>
+      <a class="text-center"[routerLink]="['/achat/'+cat.id]">
+        <img class="ImageCarou card-img-top" alt="Responsive image" [src]='["../../assets/"+cat.img]'>
+      </a>
+      <div class="card-body">
+        <p class="card-text">{{cat.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--&lt;!&ndash;Caroussel des publications pour la categorie voulu&ndash;&gt;-->
+<!--<div class="caroussel">-->
+<!--  <h4 class="titre_centre">Publications trouvées pour cette catégorie :</h4>-->
+<!--  <div class="container my-4">-->
+<!--    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">-->
+<!--      <ol class="carousel-indicators">-->
+<!--        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>-->
+<!--        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>-->
+<!--        <li data-target="#multi-item-example" data-slide-to="1"></li>-->
+<!--        <li data-target="#multi-item-example" data-slide-to="2"></li>-->
+<!--        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>-->
+<!--      </ol>-->
+<!--      <div class="carousel-inner" role="listbox">-->
+<!--        <div class="carousel-item active">-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-4" *ngFor="let i of categorie.publications">-->
+<!--              <a [routerLink]="['/achat/'+i.id]">-->
+<!--                <div class="cardCaroussel card mb-2">-->
+<!--                  <img class="ImageCarou card-img-top" [src]='["../../assets/"+i.img]'-->
+<!--                       alt="Card image cap">-->
+<!--                  <div class="card-body">-->
+<!--                    <h4 class="card-title">{{i.nom}}</h4>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

@@ -9,7 +9,7 @@ import {FrontModule} from "./front/front.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
