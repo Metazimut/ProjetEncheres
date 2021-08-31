@@ -43,7 +43,7 @@ public class CategorieRestController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCategorie.class)
+	@JsonView(Views.ViewCategorieWithPublication.class)
 	public Categorie find(@PathVariable Long id) {
 
 		Optional<Categorie> optCategorie = categorieRepo.findById(id);

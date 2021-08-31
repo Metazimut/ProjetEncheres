@@ -1,55 +1,98 @@
 <script src="../../model/compte.ts"></script>
-<div class="card mt-3">
-  <div class="card-header bg-info text-white">
-    <h3>Edition du compte</h3>
-  </div>
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-header bg-secondary text-white">
+      <h3>Edition du compte</h3>
+    </div>
 
-  <div class="card-body">
-    <div class="form-group">
-      <label for="nom">Nom :</label>
-      <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateurForm.nom">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-sm-3">
+        <div class="custom-file">
+          <div *ngIf="utilisateurForm.profilImg">
+          <img src="../../../assets/profilImg/{{utilisateurForm.profilImg}}" class="img-thumbnail img-fluid">
+          </div>
+          <input type="file" [(ngModel)]="profilImgTmp" (change)="loadImg($event)" class="file-upload" id="profilImg">
+<!--          <button (click)="addImg()">Add</button>-->
+        </div>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-sm-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateurForm.nom">
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prenom :</label>
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateurForm.prenom">
+          </div>
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="utilisateurForm.email">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="identifiant">Identifiant :</label>
+            <input type="text" class="form-control" id="identifiant" [(ngModel)]="utilisateurForm.identifiant">
+          </div>
+          <div class="form-group">
+            <label for="mdp">Mot de passe :</label>
+            <input type="text" class="form-control" id="mdp" [(ngModel)]="utilisateurForm.mdp">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="prenom">Prenom :</label>
-      <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateurForm.prenom">
+    <div class="row">
+      <div class="col">
+        <br/>
+        <br/>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email">Email :</label>
-      <input type="text" class="form-control" id="email" [(ngModel)]="utilisateurForm.email">
+      <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+        <tr *ngFor="let adr of adresseForm">
+          <td>
+            <label for="rue">Rue :</label>
+            <input type="text" class="form-control" id="rue" [(ngModel)]="adr.rue">
+          </td>
+          <td>
+            <label for="complement">Complement :</label>
+            <input type="text" class="form-control" id="complement" [(ngModel)]="adr.complement">
+          </td>
+          <td>
+            <label for="codePostal">Code Postal :</label>
+            <input type="text" class="form-control" id="codePostal" [(ngModel)]="adr.codePostal">
+          </td>
+          <td>
+            <label for="ville">Ville :</label>
+            <input type="text" class="form-control" id="ville" [(ngModel)]="adr.ville">
+          </td>
+          <td>
+            <label for="pays">Pays :</label>
+            <input type="text" class="form-control" id="pays" [(ngModel)]="adr.pays">
+          </td>
+        </tr>
+          <br/>
+          <br/>
+      </div>
     </div>
-    <tr *ngFor="let adr of adresseForm">
-      <td>
-        <label for="rue">Rue :</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="adr.rue">
-      </td>
-      <td>
-        <label for="complement">Complement :</label>
-        <input type="text" class="form-control" id="complement" [(ngModel)]="adr.complement">
-      </td>
-      <td>
-        <label for="codePostal">Code Postal :</label>
-        <input type="text" class="form-control" id="codePostal" [(ngModel)]="adr.codePostal">
-      </td>
-      <td>
-        <label for="ville">Ville :</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="adr.ville">
-      </td>
-      <td>
-        <label for="pays">Pays :</label>
-        <input type="text" class="form-control" id="pays" [(ngModel)]="adr.pays">
-      </td>
-    </tr>
+    <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+        <a [routerLink]="['/accueil']" class="btn btn-success" (click)="save() ">
+          <i class="fa fa-check"></i>
+        </a>
+        <a [routerLink]="['/accueil']" class="btn btn-warning" (click)="cancel()">
+          <i class="fa fa-sync"></i>
+        </a>
+      </div>
+    </div>
   </div>
-
-  <div class="card-footer">
-    <div class="btn-group btn-group-lg float-right">
-      <a class="btn btn-success" (click)="save()">
-        <i class="fa fa-check"></i>
-      </a>
-      <a class="btn btn-warning" (click)="cancel()">
-        <i class="fa fa-sync"></i>
-      </a>
-    </div>
-  </div>
-
 </div>

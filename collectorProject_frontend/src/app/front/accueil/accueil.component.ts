@@ -3,6 +3,7 @@ import {AccueilService} from "./accueil.service";
 import {Publication} from "../../model/publication";
 import {Categorie} from "../../model/categorie";
 import {ActivatedRoute} from "@angular/router";
+import {distinct} from "rxjs/operators";
 declare var jQuery:any;
 
 
@@ -14,6 +15,7 @@ declare var jQuery:any;
 export class AccueilComponent implements OnInit {
   publicationsByNom : Array<Publication> = null;
   categorieByNom : Array<Categorie> = null;
+  name: Array<string> = new Array<string>();
   nomPublication:string=null;
   nomCategorie:string=null;
 
@@ -61,6 +63,14 @@ export class AccueilComponent implements OnInit {
 
   listPublications(): Array<Publication> {
     return this.accueilService.publications;
+  }
+
+  listPublicationsNom() : Array<string> {
+    for(var indice = 0; indice < this.accueilService.publications.length; indice++){
+      this.name[indice] = this.accueilService.publications[indice].nom;
+    }
+    var unique = this.name.filter((v, i, a) => a.indexOf(v) === i);
+    return unique;
   }
 
   listCategories(): Array<Categorie> {
