@@ -7,6 +7,7 @@ import {AccueilComponent} from "./accueil/accueil.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
 import { CategorieComponent } from './categorie/categorie.component';
+import {AdminComponent} from "./admin/admin.component";
 
 
 
@@ -17,6 +18,7 @@ import { CategorieComponent } from './categorie/categorie.component';
     AccueilComponent,
     ConnectionComponent,
     CategorieComponent,
+    AdminComponent,
   ],
     imports: [
         CommonModule,

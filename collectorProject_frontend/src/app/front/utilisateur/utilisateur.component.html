@@ -11,9 +11,9 @@
       <div class="col-sm-3">
         <div class="custom-file">
           <div *ngIf="utilisateurForm.profilImg">
-          <img src="../../../assets/profilImg/{{utilisateurForm.profilImg}}" class="img-thumbnail rounded-circle">
+          <img src="../../../assets/profilImg/{{utilisateurForm.profilImg}}" class="img-thumbnail img-fluid">
           </div>
-          <input type="file" (change)="loadImg($event)" class="file-upload"  [(ngModel)]="utilisateurForm.profilImg" id="profilImg">
+          <input type="file" [(ngModel)]="profilImgTmp" (change)="loadImg($event)" class="file-upload" id="profilImg">
 <!--          <button (click)="addImg()">Add</button>-->
         </div>
       </div>
