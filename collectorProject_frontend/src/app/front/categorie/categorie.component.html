@@ -1,11 +1,11 @@
   <div class="card-body text-center">
-    <h5>Catégorie : {{categorie.categorieNom}}</h5>
+    <h2>Catégorie : {{categorie.categorieNom}}</h2>
     <img class="img-fluid img-thumbnail rounded-circle" [src]='["../../assets/"+categorie.imgCat]'>
   </div>
 
 
 <div>
-  <h4 class="titre_centre">Publications trouvées pour cette catégorie :</h4>
+  <h4 class="titre_centre text-center">Publications trouvées pour cette catégorie :</h4>
 </div>
 <div class="row">
   <div *ngFor="let cat of categorie.publications" class="col-md-4">
