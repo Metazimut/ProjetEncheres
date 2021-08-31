@@ -1,1 +1,21 @@
-<p>categorie works!</p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title text-center">Catégorie : {{categorie.categorieNom}}</h5>
+  </div>
+  <img class="card-img-top rounded-circle" [src]='["../../assets/"+categorie.imgCat]' alt="Card image cap" height="200" width="200">
+</div>
+
+<div>
+  <h5>Publications trouvées pour cette catégorie : </h5>
+</div>
+<div class="raw card-group">
+  <div *ngFor="let cat of categorie.publications" class="col-md-4 clearfix d-none d-md-block">
+    <div class="card mb-2">
+      <p [style.fontWeight]="'bold'" class="card-title text-center">{{cat.nom}}</p>
+      <a class="text-center"[routerLink]="['/achat/'+cat.id]">
+        <img class="img-fluid img-thumbnail" alt="Responsive image" [src]='["../../assets/"+cat.img]'>
+      </a>
+      <p class="card-text text-center">{{cat.description}}</p>
+    </div>
+  </div>
+</div>
