@@ -12,6 +12,6 @@ public interface ICategorieRepository extends JpaRepository<Categorie, Long> {
 	@Query("select c from Categorie c where c.categorieNom = :categorieNom")
 	List<Categorie> findAllCategorieByNom(@Param("categorieNom") String categorieNom);
 	
-//	@Query("select c from categorie c left join fetch c.publications p where c.id =:id")
-//	Categorie findCategorieWithPublicationById(@Param("id") Long id);
+	@Query("select c from Categorie c left join fetch c.publications p where c.id =:id")
+	Categorie findCategorieWithPublicationById(@Param("id") Long id);
 }

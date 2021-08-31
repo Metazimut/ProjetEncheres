@@ -25,5 +25,6 @@ export class AppComponent {
     Disconnect() {
       this.sessionService.user = null;
       this.sessionService.type = null;
+      sessionStorage.clear();
     }
 }

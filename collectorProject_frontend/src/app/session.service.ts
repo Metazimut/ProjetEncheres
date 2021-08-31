@@ -10,7 +10,13 @@ export class SessionService {
 
   type:string;
 
-  constructor() { }
+  constructor() {
+    let jsonUSer: string = sessionStorage.getItem('user');
+    if(jsonUSer) {
+      this.user = JSON.parse(jsonUSer);
+      this.type = this.user.type;
+    }
+  }
 
   setUser(user: UserDTO) {
     this.user = user;
