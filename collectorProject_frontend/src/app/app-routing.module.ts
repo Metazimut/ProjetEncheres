@@ -9,7 +9,6 @@ import {AchatComponent} from "./front/achat/achat.component";
 
 const routes: Routes = [
   {path: "utilisateur/:id", component: UtilisateurComponent},
-  {path: "utilisateur", component: UtilisateurComponent},
   // {path: "praticien", component: PraticienComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "connection", component: ConnectionComponent},
