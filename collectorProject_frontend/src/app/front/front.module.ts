@@ -8,6 +8,7 @@ import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
 import { CategorieComponent } from './categorie/categorie.component';
 import {AdminComponent} from "./admin/admin.component";
+import { MesPublicationsComponent } from './mes-publications/mes-publications.component';
 
 
 
@@ -19,6 +20,7 @@ import {AdminComponent} from "./admin/admin.component";
     ConnectionComponent,
     CategorieComponent,
     AdminComponent,
+    MesPublicationsComponent,
   ],
     imports: [
         CommonModule,

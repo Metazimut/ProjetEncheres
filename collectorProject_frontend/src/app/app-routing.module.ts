@@ -6,10 +6,12 @@ import {ConnectionComponent} from "./front/connection/connection.component";
 import {AchatComponent} from "./front/achat/achat.component";
 import {AdminComponent} from "./front/admin/admin.component";
 import {CategorieComponent} from "./front/categorie/categorie.component";
+import {MesPublicationsComponent} from "./front/mes-publications/mes-publications.component";
 
 
 
 const routes: Routes = [
+  {path: "mesPublications", component: MesPublicationsComponent},
   {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "utilisateur", component: UtilisateurComponent},
   {path: "categorie/:id", component: CategorieComponent},

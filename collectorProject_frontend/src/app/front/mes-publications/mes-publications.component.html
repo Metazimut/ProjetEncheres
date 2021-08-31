@@ -1,0 +1,23 @@
+<div>
+  <h4>Voici vos publications actuelles : </h4>
+</div>
+<div>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add a new publication</button>
+</div>
+<div class="row">
+  <div *ngFor="let item of listPublicationsByUtilisateur()" class="col-md-4">
+    <div class="cardCaroussel card mb-2">
+      <p class="card-title text-center">{{item.nom}}</p>
+      <a class="text-center" [routerLink]="['/achat/'+item.id]">
+        <img class="ImageCarou card-img-top"  [src]='["../../assets/"+item.img]'>
+      </a>
+      <h6 class="price">Prix de départ : <span>{{item.prixDepart}}€</span></h6>
+      <h6 class="price">Prix actuel : <span>{{item.prixActuel}}€</span></h6>
+      <p class="card-text">Temps restant : </p>
+      <div class="row">
+        <button class="btn btn-outline-dark" style="outline-color: #85ad00"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-outline-danger" style="outline-color: #85ad00"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
