@@ -8,6 +8,7 @@ import { AccueilComponent } from './front/accueil/accueil.component';
 import { ConnectionComponent } from './front/connection/connection.component';
 import {FrontModule} from "./front/front.module";
 import { VenteComponent } from './front/vente/vente.component';
+import { ValideventeComponent } from './front/validevente/validevente.component';
 
 
 
@@ -15,6 +16,7 @@ import { VenteComponent } from './front/vente/vente.component';
   declarations: [
     AppComponent,
     VenteComponent,
+    ValideventeComponent,
   ],
   imports: [
     BrowserModule,
