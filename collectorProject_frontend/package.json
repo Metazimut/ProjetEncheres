@@ -23,6 +23,9 @@
     "bootstrap": "^4.6.0",
     "bootstrap-select": "^1.13.18",
     "jquery": "^3.6.0",
+    "ng4-files": "0.0.1",
+    "php": "^1.0.2",
+    "php-server": "^0.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
