@@ -41,7 +41,7 @@ public class Commentaire {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
-	@JsonView(Views.ViewCommentaire.class)
+	@JsonView({Views.ViewCommentaire.class,Views.ViewAchat.class})
 	private Utilisateur utilisateur ;
 	
 	@ManyToOne

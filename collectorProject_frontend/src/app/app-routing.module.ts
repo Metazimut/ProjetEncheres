@@ -13,10 +13,9 @@ const routes: Routes = [
   // {path: "praticien", component: PraticienComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "connection", component: ConnectionComponent},
-  {path: "", redirectTo: "accueil", pathMatch: "full"},
+ // {path: "", redirectTo: "accueil", pathMatch: "full"},
   //{path: "planning/:id", component: PlanningComponent},
-  {path: "achat", component: AchatComponent}
-
+  {path: "achat/:id", component: AchatComponent}
 ];
 
 @NgModule({

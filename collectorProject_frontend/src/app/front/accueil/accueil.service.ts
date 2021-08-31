@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../../app-config.service";
 import {Publication} from "../../model/publication";
 import {Categorie} from "../../model/categorie";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,14 @@ export class AccueilService {
       this.publications = response;
       console.log(response);
     }, error => console.log(error));
+  }
+
+  findAllPublicationByNom(nom:string): Observable<Array<Publication>> {
+    return this.http.get<Array<Publication>>(this.chemin + "publication/nom/"+nom);
+  }
+
+  findAllCategorieByNom(nom:string): Observable<Array<Categorie>> {
+    return this.http.get<Array<Categorie>>(this.chemin + "categorie/nom/"+nom);
   }
 
   findAllCategorie() {

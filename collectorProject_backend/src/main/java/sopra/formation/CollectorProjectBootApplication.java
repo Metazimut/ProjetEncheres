@@ -9,5 +9,5 @@ public class CollectorProjectBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CollectorProjectBootApplication.class, args);
 	}
-
+	
 }
