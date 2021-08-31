@@ -37,10 +37,11 @@ export class UtilisateurComponent implements OnInit {
     this.route.params.subscribe(params => {
       if(params.id) {
         this.utilisateurForm.id = params.id;
-      } else {
+        this.loadUtilisateur();
+      } else if(this.sessionService.user){
         this.utilisateurForm.id = this.sessionService.user.utilisateur.id;
+        this.loadUtilisateur();
       }
-      this.loadUtilisateur();
     })
   }
 
@@ -55,30 +56,46 @@ export class UtilisateurComponent implements OnInit {
   // }
 
   save() {
-    if (this.utilisateurForm.id) {
-      console.log("this.utilisateurForm.profilImg "+this.utilisateurForm.profilImg)
-      this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
-        this.utilisateurForm=resp;
-        });
-    } else {
-      this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
-        this.utilisateurForm=resp;
-      });
-    }
-    for(let i in this.adresseForm){
-      this.adresseForm[i].utilisateur=this.utilisateurForm;
-      if (this.adresseForm[i].id) {
-        this.adresseService.modify(this.adresseForm[i]).subscribe(resp => {
-          this.adresseForm[i]=resp;
+    if(this.verifyUtilisateurContent()){
+      if (this.utilisateurForm.id) {
+        console.log("I have a id ")
+        this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
+          this.utilisateurForm = resp;
+          window.location.replace("http://localhost:4200/accueil");
         });
       } else {
-        this.adresseService.create(this.adresseForm[i]).subscribe(resp => {
-          this.adresseForm[i]=resp;
+        console.log("I was created ")
+        this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
+          this.utilisateurForm = resp;
+          window.location.replace("http://localhost:4200/accueil");
         });
       }
-
+      for (let i in this.adresseForm) {
+        this.adresseForm[i].utilisateur = this.utilisateurForm;
+        if (this.adresseForm[i].id) {
+          this.adresseService.modify(this.adresseForm[i]).subscribe(resp => {
+            this.adresseForm[i] = resp;
+          });
+        } else {
+          this.adresseService.create(this.adresseForm[i]).subscribe(resp => {
+            this.adresseForm[i] = resp;
+          });
+        }
+      }
     }
+  }
 
+  verifyUtilisateurContent(){
+    let ok:boolean=true;
+    if(!this.utilisateurForm.nom){ok=false}
+    else if(!this.utilisateurForm.prenom){ok=false}
+    else if(!this.utilisateurForm.email){ok=false}
+    else if(!this.utilisateurForm.identifiant){ok=false}
+    else if(!this.utilisateurForm.mdp){ok=false}
+    if (!ok){
+      alert("veuillez renseigner tous les champs");
+    }
+    return ok;
   }
 
   loadUtilisateur(){
