@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../../app-config.service";
 import {Observable} from "rxjs";
-import {Utilisateur} from "../../model/utilisateur";
 import {AchatDTO} from "../../model/achatDTO";
+import {Publication} from "../../model/publication";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,10 @@ export class AchatHttpService {
 
   findById(id: number): Observable<AchatDTO> {
     return this.http.get<AchatDTO>(this.appConfigService.backEndUrl + "achat/" + id);
+  }
+
+  findAllByCategorie(categorieID: number): Observable<Array<Publication>> {
+    return this.http.get<Array<Publication>>(this.appConfigService.backEndUrl + "achat/categorie/"+ categorieID);
   }
 
   // create(utilisateur: Utilisateur): Observable<Utilisateur> {
