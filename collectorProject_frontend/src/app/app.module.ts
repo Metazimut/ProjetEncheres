@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { AccueilComponent } from './front/accueil/accueil.component';
-import { ConnectionComponent } from './front/connection/connection.component';
 import {FrontModule} from "./front/front.module";
 import { VenteComponent } from './front/vente/vente.component';
 import { ValideventeComponent } from './front/validevente/validevente.component';
-
 
 
 @NgModule({
@@ -21,13 +18,12 @@ import { ValideventeComponent } from './front/validevente/validevente.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
     FrontModule
+    ReactiveFormsModule,
   ],
-    providers: [],
-    exports: [
-    ],
-    bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

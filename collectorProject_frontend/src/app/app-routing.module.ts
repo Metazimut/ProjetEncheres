@@ -4,6 +4,8 @@ import {UtilisateurComponent} from "./front/utilisateur/utilisateur.component";
 import {AccueilComponent} from "./front/accueil/accueil.component";
 import {ConnectionComponent} from "./front/connection/connection.component";
 import {AchatComponent} from "./front/achat/achat.component";
+import {AdminComponent} from "./front/admin/admin.component";
+import {CategorieComponent} from "./front/categorie/categorie.component";
 import {VenteComponent} from "./front/vente/vente.component";
 import {ValideventeComponent} from "./front/validevente/validevente.component";
 
@@ -12,6 +14,9 @@ import {ValideventeComponent} from "./front/validevente/validevente.component";
 const routes: Routes = [
   {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "utilisateur", component: UtilisateurComponent},
+  {path: "categorie/:id", component: CategorieComponent},
+  {path: "compteUtilisateur", component: UtilisateurComponent},
+  {path: "compteAdmin", component: AdminComponent },
   // {path: "praticien", component: PraticienComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "connection", component: ConnectionComponent},

@@ -6,23 +6,23 @@
         <div class="preview col-md-6">
 
           <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="pic-1"><img src="{{achatForm.publication.img}}" /></div>
+            <div class="tab-pane active" id="pic-1"><img class="imgPres" src="{{achatForm.publication.img}}" /></div>
 
 <!--            TODO faire un ngFor pour toutes les images-->
-<!--            <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/180/126" /></div>-->
-<!--            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/210/126" /></div>-->
-<!--            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/201/124" /></div>-->
-<!--            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/200/125" /></div>-->
+            <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/180/126" /></div>
+            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/210/126" /></div>
+            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/201/124" /></div>
+            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/200/125" /></div>
           </div>
 
           <ul class="preview-thumbnail nav nav-tabs">
             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{achatForm.publication.img}}" /></a></li>
 
             <!--            TODO faire un ngFor pour toutes les images-->
-<!--            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/180/126" /></a></li>-->
-<!--            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/210/126" /></a></li>-->
-<!--            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/201/124" /></a></li>-->
-<!--            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/125" /></a></li>-->
+            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/180/126" /></a></li>
+            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/210/126" /></a></li>
+            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/201/124" /></a></li>
+            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/125" /></a></li>
           </ul>
 
         </div>
@@ -32,16 +32,16 @@
           <h3 class="product-title">{{achatForm.publication.nom}}</h3>
 
 <!--          Pour ajouter une note-->
-<!--          <div class="rating">-->
-<!--            <div class="stars">-->
-<!--              <span class="fa fa-star checked"></span>-->
-<!--              <span class="fa fa-star checked"></span>-->
-<!--              <span class="fa fa-star checked"></span>-->
-<!--              <span class="fa fa-star checked"></span>-->
-<!--              <span class="fa fa-star"></span>-->
-<!--            </div>-->
-<!--            <span class="review-no">41 votes</span>-->
-<!--          </div>-->
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">{{votes}} votes</span>
+          </div>
 
 
           <p class="product-description">{{achatForm.publication.description}}</p>
@@ -49,7 +49,7 @@
           <h4 class="price">Enchere actuelle : <span>{{achatForm.publication.prixActuel}}€</span></h4>
 
 <!--          Ajouter une recommandation-->
-          <!--          <p class="vote"><strong>91%</strong> de nos enchérisseurs recommandent ce produit ! <strong>(87 votes)</strong></p>-->
+                    <p class="vote"><strong>{{pourcentageRecomm}}%</strong> de nos enchérisseurs recommandent ce produit ! <strong>({{recommandation}} votes)</strong></p>
 
 
 
@@ -57,7 +57,7 @@
             <button class="add-to-cart btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Enchérir</button>
 
 <!--            Bouton Favoris-->
-<!--            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>-->
+            <button class="like btn btn-default" type="button" (click)="voter()"><span class="fa fa-heart"></span></button>
           </div>
           <br>
           <span>Fin de l'enchère dans : <span *ngIf="(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>{{countdown}}</b></span><span *ngIf="!(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>Enchère terminée</b></span></span>
@@ -100,40 +100,17 @@
         <div class="carousel-item active">
 
           <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Joli truc à vendre</h4>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+            <div class="col-md-4" *ngFor="let i of [1,2,3]">
+              <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+              <div class="cardCaroussel card mb-2">
+                <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
                      alt="Card image cap">
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
+                  <h4 class="card-title">{{publisSimilaires[i].nom}}</h4>
                 </div>
               </div>
-            </div>
-
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -144,44 +121,21 @@
         <div class="carousel-item">
 
           <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+
+            <div class="col-md-4" *ngFor="let i of [4,5,6]">
+            <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+                <div class="cardCaroussel card mb-2">
+
+                  <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
                      alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
+                  <div class="card-body">
+                  <h4 class="card-title">{{publisSimilaires[i].nom}}</h4>
+                  </div>
                 </div>
-              </div>
+            </a>
+
             </div>
 
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -191,46 +145,19 @@
         <div class="carousel-item">
 
           <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+            <div class="col-md-4" *ngFor="let i of [7,8,9]">
+              <a [routerLink]="['/achat/'+publisSimilaires[i].id]">
+              <div class="cardCaroussel card mb-2">
+                <img class="ImageCarou card-img-top" src="{{publisSimilaires[i].img}}"
                      alt="Card image cap">
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
+                  <h4 class="card-title">{{publisSimilaires[i].nom}}</h4>
                 </div>
               </div>
-            </div>
-
-            <div class="col-md-4 clearfix d-none d-md-block">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary">Button</a>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
-
         </div>
         <!--/.Third slide-->
 
@@ -257,22 +184,14 @@
     <div class="row">
       <div class="col-sm-5 col-md-6 col-12 pb-4">
         <h1>Commentaires</h1>
-        <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-          <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-        </div>
-        <div class="text-justify darker mt-4 float-right"> <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40">
-          <h4>Rob Simpson</h4> <span>- 20 October, 2018</span> <br>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-        </div>
-        <div class="comment mt-4 text-justify"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-          <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-        </div>
-        <div class="darker mt-4 text-justify"> <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40">
-          <h4>Rob Simpson</h4> <span>- 20 October, 2018</span> <br>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-        </div>
+
+<!--        TODO trier en fonction des dates de commentaires-->
+        <div *ngFor="let comm of achatForm.commentaires" class="comment mt-4 text-justify"> <img src="{{comm.utilisateur.profilImg}}" alt="" class="rounded-circle" width="40" height="40">
+
+          <h4>{{comm.utilisateur.identifiant}}</h4> <span>- {{comm.utilisateur.dateCreation | date: 'dd/MM/yyyy'}}</span> <br>
+          <p>{{comm.message}}</p>
+         </div>
+
       </div>
 
 
@@ -329,12 +248,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <span>L'enchère actuelle est de : <b><span id="enchere">1820</span><span>€</span></b></span><br>
-        <input type="number" id="new_enchere" min="1820" placeholder="Votre enchère" required="required" message="L'enchère est trop basse"><span>Enchère trop basse</span>
+        <span>L'enchère actuelle est de : <b><span id="enchere">{{achatForm.publication.prixActuel}}</span><span>€</span></b></span><br>
+        <span>Entrez votre enchère :</span><br>
+        <input type="number" id="new_enchere" min="{{achatForm.publication.prixActuel+1}}" placeholder="Votre enchère" required="required" message="L'enchère est trop basse" [(ngModel)]="new_enchere"><span style="color:red;" *ngIf="new_enchere<=this.achatForm.publication.prixActuel"> Enchère trop basse</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="valider btn btn-primary">Valider l'enchère</button>
+        <button type="button" class="valider btn btn-primary" routerLink="['/achat/'+achatForm.pu]">Valider l'enchère</button>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserDTO} from "../../model/UserDTO";
 import {ConnectionService} from "./connection.service";
 import {SessionService} from "../../session.service";
+import {AppConfigService} from "../../app-config.service";
 
 @Component({
   selector: 'app-connection',
@@ -11,7 +12,7 @@ import {SessionService} from "../../session.service";
 export class ConnectionComponent implements OnInit {
   userForm: UserDTO = new UserDTO();
 
-  constructor(private connexionService: ConnectionService, private sessionService: SessionService) {
+  constructor(private connexionService: ConnectionService, private sessionService: SessionService, private appConfigService: AppConfigService) {
 
   }
 
@@ -22,7 +23,7 @@ export class ConnectionComponent implements OnInit {
     this.connexionService.authentification(this.userForm).subscribe(resp => {
       this.userForm = resp;
       this.sessionService.setUser(resp);
-      console.log(resp);
+      window.location.replace("http://localhost:4200/accueil");
     }, error => {
       alert("pas d'utilisateur trouvé")
     });

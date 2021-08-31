@@ -2,13 +2,19 @@
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/accueil']">Acceuil</a>
+        <a class="nav-link" [routerLink]="['/accueil']">Accueil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Achat</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Vente</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['/compteUtilisateur']">Mon Compte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isConnected() && isType('Admin')" [routerLink]="['/compteAdmin']">Mon Compte</a>
       </li>
     </ul>
   </div>

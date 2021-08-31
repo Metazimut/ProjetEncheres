@@ -15,7 +15,7 @@ img {
 @media screen and (max-width: 996px) {
   .preview {
     margin-bottom: 20px;
-    } }
+  } }
 
 .preview-pic {
   max-height:350px;
@@ -32,7 +32,7 @@ img {
   border: none;
   margin-top: 15px;
   margin-bottom: 30%;
-  }
+}
 .preview-thumbnail.nav-tabs li {
   width: 60px;
   margin-right: auto;
@@ -57,7 +57,7 @@ img {
   animation-duration: .3s; }
 
 .card {
-  margin-top: 50px;
+  margin-top: 25px;
   background: #eee;
   padding: 3em;
   line-height: 1.5em; }
@@ -180,7 +180,7 @@ img {
   border: outset #C4C8CA;
   border-radius: 10px;
   max-width: 1350px;
-margin-right:auto;
+  margin-right:auto;
   margin-left:auto;
 
 }
@@ -188,7 +188,7 @@ margin-right:auto;
 .caroussel {
   max-width: 1200px;
   margin-top:50px;
-margin-right:auto;
+  margin-right:auto;
   margin-left:auto;
 
 }
@@ -199,10 +199,15 @@ margin-right:auto;
 }
 
 .cardCaroussel {
-  height: 450px;
+  height: 400px;
 }
 
 .ImageCarou {
   height: 200px;
   width:300px;
+}
+
+.rounded-circle{
+  height: 150px;
+  width: 250px;
 }
