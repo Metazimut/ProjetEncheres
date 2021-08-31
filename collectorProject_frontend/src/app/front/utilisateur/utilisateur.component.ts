@@ -6,6 +6,7 @@ import {AdresseHttpService} from "../adresse/adresseHttp.service";
 import {ActivatedRoute} from "@angular/router";
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
+import {SessionService} from "../../session.service";
 
 @Component({
   selector: 'app-utilisateur',
@@ -16,7 +17,6 @@ export class UtilisateurComponent implements OnInit {
 
   utilisateurForm: Utilisateur = new Utilisateur();
   adresseForm: Array<Adresse> = new Array<Adresse>();
-  imgPath :string =null;
 
   // myForm = new FormGroup({
   //
@@ -28,12 +28,17 @@ export class UtilisateurComponent implements OnInit {
   //
   // });
 
-  constructor(private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,private adresseService: AdresseHttpService,private http:HttpClient) {
+  constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,private adresseService: AdresseHttpService,private http:HttpClient) {
+    this.utilisateurForm.profilImg=null;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.utilisateurForm.id = params.id;
+      if(params.id) {
+        this.utilisateurForm.id = params.id;
+      } else {
+        this.utilisateurForm.id = this.sessionService.user.utilisateur.id;
+      }
       this.loadUtilisateur();
     })
   }
@@ -105,7 +110,7 @@ export class UtilisateurComponent implements OnInit {
   spliceImg()
   {
     let tab = this.utilisateurForm.profilImg.split("\\");
-    this.imgPath = tab[tab.length-1];
+    this.utilisateurForm.profilImg = tab[tab.length-1];
   }
 
   // onFileChange(event : any) {
