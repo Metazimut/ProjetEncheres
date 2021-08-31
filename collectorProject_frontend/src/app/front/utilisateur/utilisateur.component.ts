@@ -17,6 +17,7 @@ export class UtilisateurComponent implements OnInit {
 
   utilisateurForm: Utilisateur = new Utilisateur();
   adresseForm: Array<Adresse> = new Array<Adresse>();
+  profilImgTmp : string;
 
   // myForm = new FormGroup({
   //
@@ -109,8 +110,10 @@ export class UtilisateurComponent implements OnInit {
 
   spliceImg()
   {
-    let tab = this.utilisateurForm.profilImg.split("\\");
-    this.utilisateurForm.profilImg = tab[tab.length-1];
+    if(this.profilImgTmp) {
+      let tab = this.profilImgTmp.split("\\");
+      this.utilisateurForm.profilImg = tab[tab.length - 1];
+    }
   }
 
   // onFileChange(event : any) {

@@ -18,10 +18,15 @@ img {
     } }
 
 .preview-pic {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1; }
+  max-height:350px;
+  width:auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imgPres {
+  max-Height:350px;
+}
 
 .preview-thumbnail.nav-tabs {
   border: none;
@@ -29,10 +34,12 @@ img {
   margin-bottom: 30%;
   }
 .preview-thumbnail.nav-tabs li {
-  width: 18%;
-  margin-right: 2.5%; }
+  width: 60px;
+  margin-right: auto;
+  margin-left: auto;}
 .preview-thumbnail.nav-tabs li img {
   max-width: 100%;
+  max-height: 35px;
   display: block; }
 .preview-thumbnail.nav-tabs li a {
   padding: 0;
@@ -189,4 +196,13 @@ margin-right:auto;
 
 .titre_centre {
   margin-left: 28%;
+}
+
+.cardCaroussel {
+  height: 450px;
+}
+
+.ImageCarou {
+  height: 200px;
+  width:300px;
 }
