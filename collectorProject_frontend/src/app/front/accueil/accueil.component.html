@@ -48,12 +48,12 @@
   <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" (click)="findAllCategoriesByNom(nomCategorie)">Search</button>
 </div>
 <br>
-<div *ngIf="categorieByNom == null" class="raw card-group">
-  <div *ngFor="let cat of listCategories().slice(-3)" class="col-md-4 clearfix d-none d-md-block">
-    <div class="card mb-2">
+<div *ngIf="categorieByNom == null" class="row">
+  <div *ngFor="let cat of listCategories().slice(-3)" class="col-md-4">
+    <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{cat.categorieNom}}</p>
       <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
-        <img class="img-fluid img-thumbnail rounded-circle"  [src]='["../../assets/"+cat.imgCat]'>
+        <img class="ImageCarou card-img-top"  [src]='["../../assets/"+cat.imgCat]'>
       </a>
     </div>
   </div>
