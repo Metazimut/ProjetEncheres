@@ -11,6 +11,7 @@ import {CategorieComponent} from "./front/categorie/categorie.component";
 
 const routes: Routes = [
   {path: "utilisateur/:id", component: UtilisateurComponent},
+  {path: "utilisateur", component: UtilisateurComponent},
   {path: "categorie/:id", component: CategorieComponent},
   {path: "compteUtilisateur", component: UtilisateurComponent},
   {path: "compteAdmin", component: AdminComponent },
