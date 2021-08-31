@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
+import { CategorieComponent } from './categorie/categorie.component';
 
 
 
@@ -15,6 +16,7 @@ import {RouterModule} from "@angular/router";
     UtilisateurComponent,
     AccueilComponent,
     ConnectionComponent,
+    CategorieComponent,
   ],
     imports: [
         CommonModule,
