@@ -41,18 +41,23 @@ export class VenteComponent implements OnInit {
   }
 
 createPublication(){
-    this.publication.img=this.img;
-    this.publication.prixDepart=this.prixdepart;
-    this.publication.prixActuel=this.prixdepart;
-    this.publication.dateEcheance=this.datefin;
-    // this.publication.publicateur.id=this.connectedService.user.utilisateur.id;
-  this.publication.publicateur=null //a virer quand connection ok
-    this.publication.categorie.id=this.categorie.id;
-console.log(this.publication)
-    this.venteService.createAnnonce(this.publication).subscribe(response => {
-      let id : number = response.id;
-      this.router.navigate(['/vente/valider/'+id])
-    });
+
+    console.log(this.connectedService.user);
+    if(this.connectedService.user) {
+      this.publication.img=this.img;
+      this.publication.prixDepart=this.prixdepart;
+      this.publication.prixActuel=this.prixdepart;
+      this.publication.dateEcheance=this.datefin;
+      this.publication.publicateur.id=this.connectedService.user.utilisateur.id;
+      this.publication.categorie.id=this.categorie.id;
+      console.log(this.publication)
+      this.venteService.createAnnonce(this.publication).subscribe(response => {
+        let id : number = response.id;
+        this.router.navigate(['/vente/valider/'+id])
+      });
+    }else{alert("Vous n'êtes pas connecté")}
+ // this.publication.publicateur=null //a virer quand connection ok
+
 }
 
 

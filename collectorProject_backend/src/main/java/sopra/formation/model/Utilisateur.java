@@ -27,7 +27,6 @@ public class Utilisateur extends Compte {
 	private List<Commentaire> commentaires = new ArrayList<Commentaire>();
 	
 	@OneToMany(mappedBy = "publicateur")
-	@JsonView(Views.ViewPublication.class)
 	private List<Publication> publications = new ArrayList<Publication>();
 	
 	@OneToMany(mappedBy = "utilisateur")
