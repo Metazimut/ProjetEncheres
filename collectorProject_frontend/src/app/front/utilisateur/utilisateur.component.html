@@ -1,7 +1,6 @@
 <script src="../../model/compte.ts"></script>
 <div class="container">
   <div class="card mt-3">
-    <form>
     <div class="card-header bg-secondary text-white">
       <h3>Edition du compte</h3>
     </div>
@@ -11,10 +10,14 @@
       <div class="col-sm-3">
         <div class="custom-file">
           <div *ngIf="utilisateurForm.profilImg">
-          <img src="../../../assets/profilImg/{{utilisateurForm.profilImg}}" class="img-thumbnail img-fluid">
+          <img src="{{utilisateurForm.profilImg}}" class="img-thumbnail img-fluid">
           </div>
-          <input type="file" [(ngModel)]="profilImgTmp" name="profilImgTmp" (change)="loadImg($event)" class="file-upload" id="profilImg">
-<!--          <button (click)="addImg()">Add</button>-->
+          <label for="profilImg">Image de profil :</label>
+          <input type="file" [(ngModel)]="profilImgTmp" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImg">
+          <br/>
+          <br/>
+          <label for="profilImgURL">Importer l'image depuis une URL :</label>
+          <input type="text" [(ngModel)]="profilImgTmpURL" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImgURL">
         </div>
       </div>
       <div class="col-1">
@@ -31,8 +34,6 @@
           </div>
           <div class="form-group emailBox">
             <label for="email">Email :</label>
-<!--            <input [class.is-invalid] = "userEmails.get('primaryEmail').invalid && userEmails.get('primaryEmail').touched"-->
-<!--                   type="email" id="email" class="form-control" formControlName="primaryEmail" />-->
             <input [(ngModel)]="utilisateurForm.email" name="email"
                    type="email" id="email" class="form-control" required pattern=""/>
           </div>
@@ -82,14 +83,23 @@
             <label for="pays">Pays :</label>
             <input type="text" required="required" class="form-control" id="pays" [(ngModel)]="adr.pays" name="pays">
           </td>
+          <td>
+
+              <label>Supprimer :</label>
+              <a class="btn btn-danger" (click)="deleteAdresse(adr.id)"><i class="fa fa-trash"></i></a>
+
+          </td>
         </tr>
+          <a class="btn btn-secondary" (click)="addAdresse()">
+            <i class="far fa-plus-square"> Ajouter une nouvelle adresse</i>
+          </a>
           <br/>
           <br/>
       </div>
     </div>
+    <span *ngIf=""></span>
     <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">
-
         <a type="submit" class="btn btn-success" (click)="save()">
           <i class="fa fa-check"></i>
         </a>
@@ -98,6 +108,5 @@
         </a>
       </div>
     </div>
-    </form>
   </div>
 </div>
