@@ -20,7 +20,7 @@ import { ValideventeComponent } from './front/validevente/validevente.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FrontModule
+    FrontModule,
     ReactiveFormsModule,
   ],
   providers: [],
