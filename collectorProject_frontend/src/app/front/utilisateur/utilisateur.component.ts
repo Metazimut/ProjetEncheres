@@ -22,13 +22,14 @@ export class UtilisateurComponent implements OnInit {
 
   utilisateurForm: Utilisateur = new Utilisateur();
   adresseForm: Array<Adresse> = new Array<Adresse>();
-  profilImgTmp : string;
+  adressesToDelete: Array<Adresse> = new Array<Adresse>();
+  profilImgTmp : string =null;
+  profilImgTmpURL : string =null;
   title = 'email-validation-tutorial';
   userForm:UserDTO=new UserDTO();
 
   constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,
               private adresseService: AdresseHttpService,private http:HttpClient, private connexionService: ConnectionService) {
-    this.utilisateurForm.profilImg=null;
   }
 
   ngOnInit(): void {
@@ -43,47 +44,46 @@ export class UtilisateurComponent implements OnInit {
     })
   }
 
-  // addImg(){
-  //   var f = (<HTMLInputElement>document.getElementById('profilImg')).files[0];
-  //   var r = new FileReader();
-  //   r.onload=function(){
-  //     console.log("r.result "+r.result)
-  //   }
-  //   r.readAsBinaryString(f);
-  //
-  // }
 
   save() {
     if(this.verifyUtilisateurContent()){
       if (this.utilisateurForm.id) {
         this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
           this.utilisateurForm = resp;
-          window.location.replace("http://localhost:4200/accueil");
+          this.saveAdresse()
         });
       } else {
         this.utilisateurService.findAllUtilisateurByEmail(this.utilisateurForm.email).subscribe(list => {
-          console.log("list "+list.length);
           if(list.length==0) {
             this.utilisateurService.create(this.utilisateurForm).subscribe(resp => {
               this.connexion();
               this.utilisateurForm = resp;
+              this.saveAdresse()
             });
           }else{
             alert("cette adresse email est déjà utilisé");
           }
         });
       }
-      for (let i in this.adresseForm) {
-        this.adresseForm[i].utilisateur = this.utilisateurForm;
-        if (this.adresseForm[i].id) {
-          this.adresseService.modify(this.adresseForm[i]).subscribe(resp => {
-            this.adresseForm[i] = resp;
-          });
-        } else {
-          this.adresseService.create(this.adresseForm[i]).subscribe(resp => {
-            this.adresseForm[i] = resp;
-          });
-        }
+
+    }
+  }
+
+  saveAdresse(){
+    for (let i in this.adressesToDelete) {
+      this.adresseService.deleteById(this.adressesToDelete[i].id).subscribe();
+    }
+    this.adressesToDelete.splice(0,this.adressesToDelete.length);
+    for (let i in this.adresseForm) {
+      this.adresseForm[i].utilisateur = this.utilisateurForm;
+      if (this.adresseForm[i].id) {
+        this.adresseService.modify(this.adresseForm[i]).subscribe(resp => {
+          this.adresseForm[i] = resp;
+        });
+      } else {
+        this.adresseService.create(this.adresseForm[i]).subscribe(resp => {
+          this.adresseForm[i] = resp;
+        });
       }
     }
   }
@@ -105,7 +105,7 @@ export class UtilisateurComponent implements OnInit {
     if (!isNaN(this.utilisateurForm.id)) {
       this.utilisateurService.findById(this.utilisateurForm.id).subscribe(resp => {
         this.utilisateurForm = resp;
-         this.spliceImg();
+        this.loadImg();
         this.adresseService.findAllByUtilisateurId(this.utilisateurForm.id).subscribe(adr => {
           this.adresseForm = adr;
         })
@@ -114,26 +114,36 @@ export class UtilisateurComponent implements OnInit {
     }
   }
 
+  addAdresse(){
+    let newAdresse: Adresse = new Adresse();
+    this.adresseForm.push(newAdresse);
+  }
+
   cancel() {
     this.utilisateurForm = null;
   }
 
-  delete(id: number){
-    this.utilisateurService.deleteById(id);
+  deleteAdresse(id: number){
+    let deleteId = this.adresseForm.findIndex(adr=>adr.id==id);
+    this.adressesToDelete.push(this.adresseForm[deleteId]);
+    this.adresseForm.splice(deleteId,1);
   }
 
 
-  loadImg(event : Event)
-  {
-    this.spliceImg();
+  loadImg() {
+    if(this.profilImgTmpURL) {
+      if (this.profilImgTmpURL.slice(0,4)=="http"){
+        this.utilisateurForm.profilImg =this.profilImgTmpURL;
+      }
+    }else if(this.profilImgTmp) {
+      this.spliceImg();
+    }
   }
 
   spliceImg()
   {
-    if(this.profilImgTmp) {
       let tab = this.profilImgTmp.split("\\");
-      this.utilisateurForm.profilImg = tab[tab.length - 1];
-    }
+      this.utilisateurForm.profilImg = "../../../assets/profilImg/"+tab[tab.length - 1];
   }
 
   connexion() {
@@ -148,36 +158,6 @@ export class UtilisateurComponent implements OnInit {
       alert("pas d'utilisateur trouvé")
     });
   }
-
-  // onFileChange(event : any) {
-  //   if (event.target.files.length > 0) {
-  //
-  //     const file = event.target.files[0];
-  //
-  //     this.myForm.patchValue({
-  //
-  //       fileSource: file
-  //
-  //     });
-  //
-  //   }
-  //
-  //   const formData = new FormData();
-  //
-  //   formData.append('file', this.myForm.get('fileSource')?.value);
-  //
-  //
-  //   this.http.post('http://localhost:8001/upload.php', formData)
-  //
-  //     .subscribe(res => {
-  //
-  //       console.log(res);
-  //
-  //       alert('Uploaded Successfully.');
-  //
-  //     })
-  // }
-
 
 
 }

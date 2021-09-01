@@ -8,6 +8,10 @@ import {ConnectionComponent} from "./connection/connection.component";
 import {RouterModule} from "@angular/router";
 import { CategorieComponent } from './categorie/categorie.component';
 import {AdminComponent} from "./admin/admin.component";
+import { MesPublicationsComponent } from './mes-publications/mes-publications.component';
+import {MesEncheresComponent} from "./mes-encheres/mes-encheres.component";
+import {VenteComponent} from "./vente/vente.component";
+import {ValideventeComponent} from "./validevente/validevente.component";
 
 
 
@@ -19,6 +23,10 @@ import {AdminComponent} from "./admin/admin.component";
     ConnectionComponent,
     CategorieComponent,
     AdminComponent,
+    MesPublicationsComponent,
+    MesEncheresComponent,
+    VenteComponent,
+    ValideventeComponent
   ],
   imports: [
     CommonModule,
