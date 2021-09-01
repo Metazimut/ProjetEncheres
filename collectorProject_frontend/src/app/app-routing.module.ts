@@ -6,6 +6,8 @@ import {ConnectionComponent} from "./front/connection/connection.component";
 import {AchatComponent} from "./front/achat/achat.component";
 import {AdminComponent} from "./front/admin/admin.component";
 import {CategorieComponent} from "./front/categorie/categorie.component";
+import {VenteComponent} from "./front/vente/vente.component";
+import {ValideventeComponent} from "./front/validevente/validevente.component";
 
 
 
@@ -18,9 +20,11 @@ const routes: Routes = [
   // {path: "praticien", component: PraticienComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "connection", component: ConnectionComponent},
-  {path: "", redirectTo: "accueil", pathMatch: "full"},
+  {path: "", redirectTo: "vente", pathMatch: "full"},
   //{path: "planning/:id", component: PlanningComponent},
-  {path: "achat/:id", component: AchatComponent}
+  {path: "achat/:id", component: AchatComponent},
+  {path : "vente", component : VenteComponent},
+  {path : "vente/valider", component : ValideventeComponent}
 ];
 
 @NgModule({
