@@ -60,7 +60,7 @@ public abstract class Compte {
 	@JsonView(Views.ViewCommon.class)
 	private String mdp;
 	
-	@Column(name = "profilImg")
+	@Column(name = "profilImg",length=512)
 	@JsonView(Views.ViewCommon.class)
 	private String profilImg;
 

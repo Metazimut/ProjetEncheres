@@ -30,16 +30,33 @@ export class AdminComponent implements OnInit {
     }
   }
   save() {
-    if (this.adminForm.id) {
-      this.adminService.modify(this.adminForm).subscribe(resp => {
-        this.adminForm=resp;
-      });
-    } else {
-      this.adminService.create(this.adminForm).subscribe(resp => {
-        this.adminForm=resp;
-      });
+    if(this.verifyUtilisateurContent()) {
+      if (this.adminForm.id) {
+        this.adminService.modify(this.adminForm).subscribe(resp => {
+          this.adminForm = resp;
+          window.location.replace("http://localhost:4200/accueil");
+        });
+      } else {
+        this.adminService.create(this.adminForm).subscribe(resp => {
+          this.adminForm = resp;
+          window.location.replace("http://localhost:4200/accueil");
+        });
+      }
     }
   }
+  verifyUtilisateurContent(){
+    let ok:boolean=true;
+    if(!this.adminForm.nom){ok=false}
+    else if(!this.adminForm.prenom){ok=false}
+    else if(!this.adminForm.email){ok=false}
+    else if(!this.adminForm.identifiant){ok=false}
+    else if(!this.adminForm.mdp){ok=false}
+    if (!ok){
+      alert("veuillez renseigner tous les champs");
+    }
+    return ok;
+  }
+
   cancel() {
     this.adminForm = null;
   }

@@ -11,6 +11,12 @@
         <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Vente</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" *ngIf="isConnected()" [routerLink]="['mesPublications']">Mes publications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isConnected()" [routerLink]="['mesEncheres']">Mes encheres</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['/compteUtilisateur']">Mon Compte</a>
       </li>
       <li class="nav-item">
@@ -46,7 +52,7 @@
         <h5 class="mb-1">Register for free</h5>
       </li>
       <li class="list-inline-item">
-        <a [routerLink]="['/inscription']" class="btn btn-primary">Sign up!</a>
+        <a [routerLink]="['/utilisateur']" class="btn btn-primary">Sign up!</a>
       </li>
     </ul>
     <!-- Call to action -->

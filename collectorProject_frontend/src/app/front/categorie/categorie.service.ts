@@ -9,14 +9,13 @@ import {Publication} from "../../model/publication";
   providedIn: 'root'
 })
 export class CategorieService {
-  categorie: Categorie = new Categorie();
   chemin: string;
 
   constructor(private http : HttpClient,private appconfig:AppConfigService) {
     this.chemin = this.appconfig.backEndUrl;
   }
 
-  findAllPublicationByNom(id:number): Observable<Categorie> {
+  findCategorieByidWithPublication(id:number): Observable<Categorie> {
     return this.http.get<Categorie>(this.chemin + "categorie/"+id);
   }
 }

@@ -54,6 +54,12 @@ public class UtilisateurRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
+	@GetMapping("/email/{email}")
+	@JsonView(Views.ViewUtilisateur.class)
+	public List<Utilisateur> findAllUtilisateurByEmail(@PathVariable String email) {
+		return utilisateurRepo.findAllUtilisateurByEmail(email);
+	}
+
 	
 	@GetMapping("/{id}/adresses")
 	@JsonView(Views.ViewUtilisateur.class)
@@ -68,7 +74,7 @@ public class UtilisateurRestController {
 		List<Compte> utilisateurs = utilisateurRepo.findAllByVille(ville,pays);
 		return utilisateurs;
 	}
-	
+
 	@GetMapping("/pays/{pays}/code/{code}")
 	@JsonView(Views.ViewUtilisateur.class)
 	public List<Compte> findByCodePostal(@PathVariable String pays,@PathVariable String code) {
