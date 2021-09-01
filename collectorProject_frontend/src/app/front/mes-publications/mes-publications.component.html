@@ -9,7 +9,7 @@
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.nom}}</p>
       <a class="text-center" [routerLink]="['/achat/'+item.id]">
-        <img class="ImageCarou card-img-top"  [src]='["../../assets/"+item.img]'>
+        <img class="ImageCarou card-img-top"  [src]='[item.img]'>
       </a>
       <h6 class="price">Prix de départ : <span>{{item.prixDepart}}€</span></h6>
       <h6 class="price">Prix actuel : <span>{{item.prixActuel}}€</span></h6>
