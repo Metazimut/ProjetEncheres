@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,6 @@ import sopra.formation.model.Categorie;
 import sopra.formation.model.Commentaire;
 import sopra.formation.model.ParticipationEnchere;
 import sopra.formation.model.Publication;
-import sopra.formation.model.Utilisateur;
 import sopra.formation.model.Views;
 import sopra.formation.repository.ICategorieRepository;
 import sopra.formation.repository.ICommentaireRepository;
@@ -102,6 +102,40 @@ public class AchatDTORestController {
 			return ench;
 		}
 		
+		
+		
+		@GetMapping("enchere/{id}")
+		@JsonView(Views.ViewAchat.class)
+		public List<ParticipationEnchere> findAllEnchereByPublicationId(@PathVariable Long id) {
+			
+			Publication ench= new Publication();
+			
+			Optional<Publication> optEnch = publicationRepo.findById(id);
+			
+			if (optEnch.isPresent()) {
+				ench=optEnch.get();
+			} else {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+			}
+			
+			List<ParticipationEnchere> encheres = enchereRepo.findAllByPublication(ench); //est-ce que ça peut return Null ?
+			
+			return encheres;
+			
+		}
+		
+		
+		
+		@PutMapping("/enchere/{id}")
+		public Publication update(@RequestBody Publication publication, @PathVariable Long id) {
+			if (!publicationRepo.existsById(id)) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+			}
+
+			publication = publicationRepo.save(publication);
+
+			return publication;
+		}
 		
 		
 		

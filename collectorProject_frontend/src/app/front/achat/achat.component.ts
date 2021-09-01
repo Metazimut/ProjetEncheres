@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AchatHttpService} from "./achatHttp.service";
 import {AchatDTO} from "../../model/achatDTO";
 import {Publication} from "../../model/publication";
@@ -30,8 +30,6 @@ export class AchatComponent implements OnInit {
 
   publisSimilaires: Array<Publication>;
 
-  // pour:number=this.randomInt(5,103);
-  // contre:number=this.randomInt(0,97);
   pour:number=1;
   contre:number=1;
   recommandation:number=this.pour+this.contre;
@@ -46,17 +44,27 @@ export class AchatComponent implements OnInit {
 
   confirm:boolean=false;
 
+  bestMan: number=null;
+  moi:number=this.connectedService.user.utilisateur.id;
 
-  constructor(private route: ActivatedRoute, private achatService: AchatHttpService, private connectedService: SessionService) {
-    this.achatForm.publication=new Publication();
-    this.achatForm.commentaires=new Array<Commentaire>();
-    this.achatForm.encheres=new Array<ParticipationEnchere>();
-    this.new_enchere=0;
+  blockEnchere:boolean=false;
+
+
+  constructor(private route: ActivatedRoute, private achatService: AchatHttpService, private connectedService: SessionService, private router: Router) {
+    this.achatForm.publication = new Publication();
+    this.achatForm.commentaires = new Array<Commentaire>();
+    this.achatForm.encheres = new Array<ParticipationEnchere>();
+    this.new_enchere = 0;
+    if (this.moi==this.bestMan) {
+      this.blockEnchere=true;
+    }
+    else {this.blockEnchere=false;}
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params.id;
+      console.log("mondID="+this.id);
       this.achatService.findById(params.id).subscribe(ach => {
         this.achatForm.publication=ach.publication;
         this.achatForm.commentaires=ach.commentaires;
@@ -64,15 +72,13 @@ export class AchatComponent implements OnInit {
         this.PubliAleatoiresMemeCategorie();
         this.triCommentaires();
         this.new_enchere=this.achatForm.publication.prixActuel+1;
-        console.log("test user : "+this.connectedService.user.utilisateur.nom)
+        this.meilleureEnchere();
         });
       })
     this.subscription=interval(1000).subscribe(x => {
-      this.countdown=this.timeDiff(this.achatForm.publication.dateEcheance);})
+      this.countdown=this.timeDiff(this.achatForm.publication.dateEcheance);
+    })
   }
-
-
-
 
   nouvelleEnchere() {
     this.enchereLancee.prixProposition=this.new_enchere;
@@ -88,6 +94,8 @@ export class AchatComponent implements OnInit {
       //   this.achatForm.commentaires=param.commentaires;
       //   this.triCommentaires();
       // })
+      this.ngOnInit();
+
     });
   }
 
@@ -207,8 +215,37 @@ private timeDiff(value: Date): string{
     this.daysToDday = Math.floor((timeDifference) / (milliSecondsInASecond * minutesInAnHour * SecondsInAMinute * hoursInADay));
   }
 
+  meilleureEnchere() {
+    this.achatService.findEnch(this.id).subscribe( x => {
+      let idPropMax=null;
+      if (x.length==0) {
+
+        this.achatForm.publication.prixActuel=this.achatForm.publication.prixDepart
+      }
+      else {
+        let k=0;
+
+        for (let i of x) {
+          if (i.prixProposition>k) {
+            k=i.prixProposition;
+            idPropMax=i.utilisateur.id;
+          }
+        }
+        this.achatForm.publication.prixActuel=k;
+      }
+      this.bestMan=idPropMax;
+      if (this.moi==this.bestMan) {
+        this.blockEnchere=true;
+      }
+      else {this.blockEnchere=false;}
 
 
+
+        this.achatService.modifyPubli(this.id,this.achatForm.publication).subscribe( resp => {
+        })
+
+    })
+  }
 
 
 }

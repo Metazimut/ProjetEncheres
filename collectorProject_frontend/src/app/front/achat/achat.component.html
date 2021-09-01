@@ -46,7 +46,10 @@
 
           <p class="product-description">{{achatForm.publication.description}}</p>
           <h5 class="price">Prix de départ : <span>{{achatForm.publication.prixDepart}}€</span></h5>
-          <h4 class="price">Enchere actuelle : <span>{{achatForm.publication.prixActuel}}€</span></h4>
+
+          <h4 class="price" *ngIf="!(moi==bestMan) && (daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)">Enchere actuelle : <span>{{achatForm.publication.prixActuel}}€</span></h4>
+          <h4 class="price" *ngIf="!(moi==bestMan) && !(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)">Enchere finale : <span>{{achatForm.publication.prixActuel}}€</span></h4>
+          <h4 class="price enchereWin" *ngIf="(moi==bestMan)">L'enchère est actuellement à vous<br> pour : <span>{{achatForm.publication.prixActuel}}€</span></h4>
 
 <!--          Ajouter une recommandation-->
                     <p class="vote"><strong>{{pourcentageRecomm}}%</strong> de nos enchérisseurs recommandent ce produit !</p>
@@ -54,14 +57,14 @@
 
 
           <div class="action">
-            <button class="add-to-cart btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Enchérir</button>
+            <button class="add-to-cart btn btn-default" [disabled]="blockEnchere || (!(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0))" type="button" data-toggle="modal" data-target="#exampleModal">Enchérir</button>
 
 <!--            Bouton Like/Dislike-->
             <button class="like btn btn-default" type="button" [disabled]="clicked" (click)="voterPour(); clicked=true;"><span class="fa fa-heart"></span></button>
             <button class="dislike btn btn-default" type="button" [disabled]="clicked" (click)="voterContre(); clicked=true;"><span class="fa fa-thumbs-down"></span></button>
           </div>
           <br>
-          <span>Fin de l'enchère dans : <span *ngIf="(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>{{countdown}}</b></span><span *ngIf="!(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>Enchère terminée</b></span></span>
+          <span>Fin des enchères dans : <span *ngIf="(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>{{countdown}}</b></span><span *ngIf="!(daysToDday>=0 && hoursToDday>=0 && minutesToDday>=0 && secondsToDday>=0)"><b>Enchères terminées</b></span></span>
         </div>
       </div>
     </div>

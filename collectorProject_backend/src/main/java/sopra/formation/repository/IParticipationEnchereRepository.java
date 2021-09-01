@@ -15,5 +15,5 @@ public interface IParticipationEnchereRepository extends JpaRepository<Participa
 
 	@Query("select e from ParticipationEnchere e where e.publication = :publication")
 	List<ParticipationEnchere> findAllByPublication(@Param("publication") Publication publication);
-
+	
 }
