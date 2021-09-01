@@ -13,7 +13,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let item of listPublications();let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
-        <a [routerLink]="['/achat/'+item.id]">
+        <a *ngIf="isConnected()" [routerLink]="['/achat/'+item.id]">
+          <img class="mx-auto d-block" [src]='[item.img]' [alt]="item.nom" height="350">
+        </a>
+        <a *ngIf="!isConnected()" [routerLink]="['/connection']">
           <img class="mx-auto d-block" [src]='[item.img]' [alt]="item.nom" height="350">
         </a>
       </div>
@@ -65,7 +68,7 @@
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{cat.categorieNom}}</p>
       <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
-        <img class="ImageCarou card-img-top"  [src]='[+cat.imgCat]'>
+        <img class="ImageCarou card-img-top"  [src]='[cat.imgCat]'>
       </a>
     </div>
   </div>
