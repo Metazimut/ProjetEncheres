@@ -25,6 +25,26 @@ export class MesPublicationsComponent implements OnInit {
     return this.mesPublicationsService.publications;
   }
 
+  listPublicationsByUtilisateurPast(): Array<Publication> {
+    let publicationsFilter: Array<Publication> = new Array<Publication>();
+    for(var i = 0; i < this.mesPublicationsService.publications.length; i++){
+      if(this.timeDiff(this.mesPublicationsService.publications[i].dateEcheance) < 0){
+        publicationsFilter.push(this.mesPublicationsService.publications[i]);
+      }
+    }
+    return publicationsFilter;
+  }
+
+  listPublicationsByUtilisateurActual(): Array<Publication> {
+    let publicationsFilter: Array<Publication> = new Array<Publication>();
+    for(var i = 0; i < this.mesPublicationsService.publications.length; i++){
+      if(this.timeDiff(this.mesPublicationsService.publications[i].dateEcheance) > 0){
+        publicationsFilter.push(this.mesPublicationsService.publications[i]);
+      }
+    }
+    return publicationsFilter;
+  }
+
   timeDiff(value: Date): number{
     let time=new Date();
     let echeance=new Date(value);

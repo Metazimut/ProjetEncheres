@@ -66,7 +66,7 @@ export class AccueilComponent implements OnInit {
   }
 
   listPublicationsNom() : Array<string> {
-    for(var indice = 0; indice < this.accueilService.publications.length; indice++){
+    for(let indice = 0; indice < this.accueilService.publications.length; indice++){
       this.name[indice] = this.accueilService.publications[indice].nom;
     }
     var unique = this.name.filter((v, i, a) => a.indexOf(v) === i);

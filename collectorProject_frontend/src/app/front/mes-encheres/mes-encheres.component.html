@@ -1,8 +1,8 @@
 <div>
   <h4>Voici vos encheres actuelles : </h4>
 </div>
-<div *ngFor="let item of listEncheresByUtilisateur()" class="row">
-  <div *ngIf="timeDiff(item.publication.dateEcheance) > 0" class="col-md-4">
+<div class="row">
+  <div *ngFor="let item of listEncheresByUtilisateurActual()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
       <a class="text-center" [routerLink]="['/achat/'+item.publication.id]">
@@ -20,8 +20,8 @@
 <div>
   <h4>Voici vos encheres passées : </h4>
 </div>
-<div *ngFor="let item of listEncheresByUtilisateur()" class="row">
-  <div *ngIf="timeDiff(item.publication.dateEcheance) < 0" class="col-md-4">
+<div class="row">
+  <div *ngFor="let item of listEncheresByUtilisateurPast()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
       <a class="text-center" [routerLink]="['/achat/'+item.publication.id]">
