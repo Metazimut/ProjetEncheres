@@ -24,4 +24,10 @@ export class MesPublicationsComponent implements OnInit {
   listPublicationsByUtilisateur(): Array<Publication> {
     return this.mesPublicationsService.publications;
   }
+
+  timeDiff(value: Date): number{
+    let time=new Date();
+    let echeance=new Date(value);
+    return echeance.getTime()-time.getTime();
+  }
 }

@@ -8,9 +8,11 @@
       <a class="text-center" [routerLink]="['/achat/'+item.publication.id]">
         <img class="ImageCarou card-img-top"  [src]='["../../assets/"+item.publication.img]'>
       </a>
+      <h6 class="price">Prix de départ : <span>{{item.publication.prixDepart}}€</span></h6>
       <h6 class="price">Prix actuel : <span>{{item.publication.prixActuel}}€</span></h6>
       <h6 class="price">Votre dernier prix : <span>{{item.prixProposition}}€</span></h6>
-      <h6>Votre place : {{item.placeNb}}</h6>
+      <h6 *ngIf="item.prixProposition == item.publication.prixActuel" style="color: coral">Vous êtes en tête pour remporter l'enchere</h6>
+      <h6 *ngIf="item.prixProposition != item.publication.prixActuel" style="color: coral">Vous n'ête plus en tête pour remporter l'enchere</h6>
       <h6>Fin des encheres : {{item.publication.dateEcheance | date:'dd/MM/yyyy à h:mm'}}</h6>
     </div>
   </div>
@@ -27,9 +29,8 @@
       </a>
       <h6 class="price">Prix d'achat final : <span>{{item.publication.prixActuel}}€</span></h6>
       <h6 class="price">Derniere proposition : <span>{{item.prixProposition}}€</span></h6>
-      <h6>Votre place : {{item.placeNb}}</h6>
-      <h6 *ngIf="item.placeNb == 1" style="color: coral">Enchere remportée</h6>
-      <h6 *ngIf="item.placeNb != 1" style="color: coral">Enchere non remportée</h6>
+      <h6 *ngIf="item.prixProposition == item.publication.prixActuel" style="color: coral">Enchere remportée</h6>
+      <h6 *ngIf="item.prixProposition != item.publication.prixActuel" style="color: coral">Enchere non remportée</h6>
       <h6 style="color: red">Encheres terminées le {{item.publication.dateEcheance | date:'dd/MM/yyyy à h:mm'}}</h6>
     </div>
   </div>
