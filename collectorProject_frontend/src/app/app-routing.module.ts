@@ -24,7 +24,7 @@ const routes: Routes = [
   //{path: "planning/:id", component: PlanningComponent},
   {path: "achat/:id", component: AchatComponent},
   {path : "vente", component : VenteComponent},
-  {path : "vente/valider", component : ValideventeComponent}
+  {path : "vente/valider/:id", component : ValideventeComponent}
 ];
 
 @NgModule({
