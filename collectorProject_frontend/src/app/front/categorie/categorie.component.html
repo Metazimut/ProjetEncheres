@@ -11,7 +11,10 @@
   <div *ngFor="let cat of categorie.publications" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <h4 class="card-title text-center">{{cat.nom}}</h4>
-      <a class="text-center"[routerLink]="['/achat/'+cat.id]">
+      <a *ngIf="isConnected()" class="text-center"[routerLink]="['/achat/'+cat.id]">
+        <img class="ImageCarou card-img-top" alt="Responsive image" [src]='[cat.img]'>
+      </a>
+      <a *ngIf="!isConnected()" class="text-center"[routerLink]="['/connection']">
         <img class="ImageCarou card-img-top" alt="Responsive image" [src]='[cat.img]'>
       </a>
     </div>
