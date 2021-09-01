@@ -5,9 +5,6 @@
         <a class="nav-link" [routerLink]="['/accueil']">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/accueil']">Achat</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/vente']">Vente</a>
       </li>
       <li class="nav-item">
