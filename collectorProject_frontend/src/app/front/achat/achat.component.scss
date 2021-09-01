@@ -114,7 +114,7 @@ img {
 .color:first-of-type {
   margin-left: 20px; }
 
-.add-to-cart, .like {
+.add-to-cart {
   background: #ff9f1a;
   padding: 1.2em 1.5em;
   border: none;
@@ -123,8 +123,46 @@ img {
   color: #fff;
   -webkit-transition: background .3s ease;
   transition: background .3s ease; }
-.add-to-cart:hover, .like:hover {
+.add-to-cart:hover {
   background: #b36800;
+  color: #fff; }
+
+.like {
+  background: #85E114;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.like:hover {
+  background: #6AB310;
+  color: #fff; }
+
+.dislike {
+  background: #C82E13;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.dislike:hover {
+  background: #89200E;
+  color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+.not-available:before {
+  font-family: fontawesome;
+  content: "\f00d";
   color: #fff; }
 
 .not-available {
@@ -204,4 +242,13 @@ margin-right:auto;
 .ImageCarou {
   height: 200px;
   width:300px;
+}
+
+.attention {
+  color: red;
+}
+
+.enchereWin {
+  font-size:20px;
+  color:green;
 }
