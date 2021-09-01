@@ -18,6 +18,10 @@ export class UtilisateurHttpService {
     return this.http.get<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
+  findAllUtilisateurByEmail(email: string): Observable<Array<Utilisateur>>{
+    return this.http.get<Array<Utilisateur>>(this.appConfigService.backEndUrl + "utilisateur/email/" + email);
+  }
+
   create(utilisateur: Utilisateur): Observable<Utilisateur> {
     return this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur);
   }
