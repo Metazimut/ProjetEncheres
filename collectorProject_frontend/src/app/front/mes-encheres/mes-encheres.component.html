@@ -6,7 +6,7 @@
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
       <a class="text-center" [routerLink]="['/achat/'+item.publication.id]">
-        <img class="ImageCarou card-img-top"  [src]='["../../assets/"+item.publication.img]'>
+        <img class="ImageCarou card-img-top"  [src]='[item.publication.img]'>
       </a>
       <h6 class="price">Prix actuel : <span>{{item.publication.prixActuel}}€</span></h6>
       <h6 class="price">Votre dernier prix : <span>{{item.prixProposition}}€</span></h6>
@@ -23,7 +23,7 @@
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
       <a class="text-center" [routerLink]="['/achat/'+item.publication.id]">
-        <img class="ImageCarou card-img-top"  [src]='["../../assets/"+item.publication.img]'>
+        <img class="ImageCarou card-img-top"  [src]='[item.publication.img]'>
       </a>
       <h6 class="price">Prix d'achat final : <span>{{item.publication.prixActuel}}€</span></h6>
       <h6 class="price">Derniere proposition : <span>{{item.prixProposition}}€</span></h6>
