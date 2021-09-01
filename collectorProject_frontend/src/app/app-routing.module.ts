@@ -7,10 +7,12 @@ import {AchatComponent} from "./front/achat/achat.component";
 import {AdminComponent} from "./front/admin/admin.component";
 import {CategorieComponent} from "./front/categorie/categorie.component";
 import {MesPublicationsComponent} from "./front/mes-publications/mes-publications.component";
+import {MesEncheresComponent} from "./front/mes-encheres/mes-encheres.component";
 
 
 
 const routes: Routes = [
+  {path: "mesEncheres", component: MesEncheresComponent},
   {path: "mesPublications", component: MesPublicationsComponent},
   {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "utilisateur", component: UtilisateurComponent},

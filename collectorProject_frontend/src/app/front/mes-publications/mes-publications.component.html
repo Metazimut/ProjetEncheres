@@ -13,7 +13,7 @@
       </a>
       <h6 class="price">Prix de départ : <span>{{item.prixDepart}}€</span></h6>
       <h6 class="price">Prix actuel : <span>{{item.prixActuel}}€</span></h6>
-      <p class="card-text">Temps restant : </p>
+      <h6>Fin des encheres : {{item.dateEcheance | date:'dd/MM/yyyy à h:mm'}}</h6>
       <div class="row">
         <button class="btn btn-outline-dark" style="outline-color: #85ad00"><i class="fa fa-edit"></i></button>
         <button class="btn btn-outline-danger" style="outline-color: #85ad00"><i class="fa fa-trash"></i></button>
