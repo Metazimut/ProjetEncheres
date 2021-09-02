@@ -12,12 +12,15 @@
           <div *ngIf="utilisateurForm.profilImg">
           <img src="{{utilisateurForm.profilImg}}" class="img-thumbnail img-fluid">
           </div>
-          <label for="profilImg">Image de profil :</label>
-          <input type="file" [(ngModel)]="profilImgTmp" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImg">
-          <br/>
+<!--          <label for="profilImg">Image de profil :</label>-->
+<!--          <input type="file" [(ngModel)]="profilImgTmp" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImg">-->
+<!--          <br/>-->
+          <form [formGroup]="myForm" >
+            <input value="Chosiir" formControlName="file" [(ngModel)]="profilImgTmp" id="file"  type="file"  class="form-control"  (change)="loadImg($event)">
+          </form>
           <br/>
           <label for="profilImgURL">Importer l'image depuis une URL :</label>
-          <input type="text" [(ngModel)]="profilImgTmpURL" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImgURL">
+          <input type="text" [(ngModel)]="profilImgTmpURL" name="profilImgTmp" (change)="loadImg($event)" class="file-upload" id="profilImgURL">
         </div>
       </div>
       <div class="col-1">
