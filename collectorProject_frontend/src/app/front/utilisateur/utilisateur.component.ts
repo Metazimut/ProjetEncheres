@@ -149,7 +149,7 @@ export class UtilisateurComponent implements OnInit {
         });
       }
       this.upload();
-      this.spliceImg();
+      //this.spliceImg();
     }
 
   }
@@ -160,11 +160,9 @@ export class UtilisateurComponent implements OnInit {
 
     this.http.post('http://localhost:80/upload.php', formData)
       .subscribe(res => {
-        let tab = this.profilImgTmp.split("\\");
+        this.spliceImg();
 
-        this.utilisateurForm.profilImg = "../../../assets/profilImg/"+tab[tab.length - 1];
-
-      })
+      } ,error => this.spliceImg());
   }
 
   spliceImg()
