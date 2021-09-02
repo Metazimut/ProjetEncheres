@@ -15,7 +15,7 @@
           <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['mesEncheres']">Mes encheres</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isConnected() && isType('Admin')" [routerLink]="['mesEncheres']">Gestion des catégories</a>
+          <a class="nav-link" *ngIf="isConnected() && isType('Admin')" [routerLink]="['adminCategorie']">Gestion des catégories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['/compteUtilisateur']">Mon Compte</a>
