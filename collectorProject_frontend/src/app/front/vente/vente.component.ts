@@ -3,6 +3,11 @@ import { FormBuilder } from '@angular/forms';
 import {Publication} from "../../model/publication";
 import {Categorie} from "../../model/categorie";
 import {Utilisateur} from "../../model/utilisateur";
+import {VenteHttpService} from "./vente-http.service";
+import {newArray} from "@angular/compiler/src/util";
+import {Commentaire} from "../../model/commentaire";
+import {SessionService} from "../../session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'vente',
@@ -11,22 +16,50 @@ import {Utilisateur} from "../../model/utilisateur";
 })
 export class VenteComponent implements OnInit {
    publication:Publication = new Publication();
-    img : string;
+    img : string = "";
+    categories : Array<Categorie> = new Array<Categorie>();
+    aujourdhui:Date = new Date();
+    datefin:Date = new Date();
 
-  constructor()
+    prixdepart:number=1;
+    prixreserve:number=1;
+
+  categorie : Categorie=new Categorie();
+
+
+  constructor(private venteService : VenteHttpService, private connectedService : SessionService, private router : Router)
   {
-    this.publication.commentaires=null;
-    this.publication.dateEcheance=null;
-    this.publication.prixActuel=20;
-    this.publication.prixDepart=1;
     this.publication.categorie=new Categorie();
     this.publication.publicateur=new Utilisateur();
-    this.publication.version=0;
-    this.publication.categorie.id=1;
   }
 
   ngOnInit(): void {
+    this.venteService.findAllCategorie().subscribe(params =>{
+      this.categories=params;
+
+    })
   }
+
+createPublication(){
+
+    console.log(this.connectedService.user);
+    if(this.connectedService.user) {
+      this.publication.img=this.img;
+      this.publication.prixDepart=this.prixdepart;
+      this.publication.prixActuel=this.prixdepart;
+      this.publication.dateEcheance=this.datefin;
+      this.publication.publicateur.id=this.connectedService.user.utilisateur.id;
+      this.publication.categorie.id=this.categorie.id;
+      console.log(this.publication)
+      this.venteService.createAnnonce(this.publication).subscribe(response => {
+        let id : number = response.id;
+        this.router.navigate(['/vente/valider/'+id])
+      });
+    }else{alert("Vous n'êtes pas connecté")}
+ // this.publication.publicateur=null //a virer quand connection ok
+
+}
+
 
   // validateAnnonce()
   // {
@@ -40,5 +73,8 @@ export class VenteComponent implements OnInit {
   {
 
   }
+ test(){
+    console.log(this.categorie.id)
+ }
 
 }
