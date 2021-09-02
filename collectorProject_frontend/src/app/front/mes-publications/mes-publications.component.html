@@ -5,7 +5,7 @@
   <h4>Voici vos publications actuelles : </h4>
 </div>
 <div>
-  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add a new publication</button>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" [routerLink]="['/vente']">Add a new publication</button>
 </div>
 <div *ngIf="listPublicationsByUtilisateurActual().length != 0" class="row">
   <div *ngFor="let item of listPublicationsByUtilisateurActual()" class="col-md-4">
