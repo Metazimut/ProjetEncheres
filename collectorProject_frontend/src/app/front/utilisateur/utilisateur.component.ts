@@ -27,6 +27,10 @@ export class UtilisateurComponent implements OnInit {
   profilImgTmpURL : string =null;
   title = 'email-validation-tutorial';
   userForm:UserDTO=new UserDTO();
+  myForm = new FormGroup({
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
+  });
 
   constructor(private sessionService: SessionService, private route: ActivatedRoute, private utilisateurService: UtilisateurHttpService,
               private adresseService: AdresseHttpService,private http:HttpClient, private connexionService: ConnectionService) {
@@ -132,20 +136,44 @@ export class UtilisateurComponent implements OnInit {
   }
 
 
-  loadImg() {
+  loadImg(event?: any) {
     if(this.profilImgTmpURL) {
       if (this.profilImgTmpURL.slice(0,4)=="http"){
         this.utilisateurForm.profilImg =this.profilImgTmpURL;
       }
-    }else if(this.profilImgTmp) {
+    }else {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.myForm.patchValue({
+          fileSource: file
+        });
+      }
+      this.upload();
       this.spliceImg();
     }
+
+  }
+
+  upload(){
+    const formData = new FormData();
+    formData.append('profilImgTmp', this.myForm.get('fileSource')?.value);
+
+    this.http.post('http://localhost:80/upload.php', formData)
+      .subscribe(res => {
+        let tab = this.profilImgTmp.split("\\");
+
+        this.utilisateurForm.profilImg = "../../../assets/profilImg/"+tab[tab.length - 1];
+
+      })
   }
 
   spliceImg()
   {
+    console.log(this.profilImgTmp);
       let tab = this.profilImgTmp.split("\\");
+
       this.utilisateurForm.profilImg = "../../../assets/profilImg/"+tab[tab.length - 1];
+
   }
 
   connexion() {
