@@ -1,0 +1,19 @@
+<div>
+  <h4>Voici les catégories disponibles actuellement : </h4>
+</div>
+<div>
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" [routerLink]="['/categorieCreationEdition/']">Add a new categorie</button>
+</div>
+<div class="row">
+  <div *ngFor="let cat of listCategories()" class="col-md-4">
+    <div class="cardCaroussel card mb-2">
+      <p class="card-title text-center">{{cat.categorieNom}}</p>
+      <a class="text-center"[routerLink]="['/categorie/'+cat.id]">
+        <img class="ImageCarou card-img-top"  [src]='[cat.imgCat]'>
+      </a>
+      <div class="row">
+        <button class="btn btn-outline-dark" style="outline-color: #85ad00" [routerLink]="['/categorieCreationEdition/'+cat.id]"><i class="fa fa-edit"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -56,6 +56,7 @@ public class CategorieRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCategorie.class)
 	public Categorie create(@RequestBody Categorie categorie) {
 		categorie = categorieRepo.save(categorie);
 
@@ -63,6 +64,7 @@ public class CategorieRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCategorie.class)
 	public Categorie update(@RequestBody Categorie categorie, @PathVariable Long id) {
 		if (!categorieRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
@@ -74,6 +76,7 @@ public class CategorieRestController {
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewCategorie.class)
 	public void delete(@PathVariable Long id) {
 		if (!categorieRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

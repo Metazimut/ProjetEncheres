@@ -10,11 +10,16 @@ import {VenteComponent} from "./front/vente/vente.component";
 import {ValideventeComponent} from "./front/validevente/validevente.component";
 import {MesPublicationsComponent} from "./front/mes-publications/mes-publications.component";
 import {MesEncheresComponent} from "./front/mes-encheres/mes-encheres.component";
+import {AdminCategorieComponent} from "./front/admin-categorie/admin-categorie.component";
+import {CategorieCreationEditionComponent} from "./front/categorie-creation-edition/categorie-creation-edition.component";
 
 
 
 const routes: Routes = [
-  {path: "mesEncheres", component: MesEncheresComponent},
+  {path: "categorieCreationEdition/:id", component: CategorieCreationEditionComponent},
+  {path: "categorieCreationEdition", component: CategorieCreationEditionComponent},
+  {path: "adminCategorie", component: AdminCategorieComponent},
+  {path: "mesEnchadminCategorieeres", component: MesEncheresComponent},
   {path: "mesPublications", component: MesPublicationsComponent},
   {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "utilisateur", component: UtilisateurComponent},
