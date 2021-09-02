@@ -4,6 +4,7 @@ import {Publication} from "../../model/publication";
 import {Categorie} from "../../model/categorie";
 import {ActivatedRoute} from "@angular/router";
 import {distinct} from "rxjs/operators";
+import {SessionService} from "../../session.service";
 declare var jQuery:any;
 
 
@@ -19,7 +20,7 @@ export class AccueilComponent implements OnInit {
   nomPublication:string=null;
   nomCategorie:string=null;
 
-  constructor(private accueilService:AccueilService) {
+  constructor(private accueilService:AccueilService, private sessionService: SessionService) {
     this.findAllPublications();
     this.findAllCategories();
   }
@@ -33,6 +34,10 @@ export class AccueilComponent implements OnInit {
         jQuery(".selectpicker").selectpicker('refresh');   // refresh the selectpicker with fetched courses
       }, 1000);
     }
+  }
+
+  isConnected(): boolean {
+    return this.sessionService.user != null;
   }
 
   findAllPublications(){
@@ -66,7 +71,7 @@ export class AccueilComponent implements OnInit {
   }
 
   listPublicationsNom() : Array<string> {
-    for(var indice = 0; indice < this.accueilService.publications.length; indice++){
+    for(let indice = 0; indice < this.accueilService.publications.length; indice++){
       this.name[indice] = this.accueilService.publications[indice].nom;
     }
     var unique = this.name.filter((v, i, a) => a.indexOf(v) === i);

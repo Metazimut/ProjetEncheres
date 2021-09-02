@@ -1,6 +1,6 @@
   <div class="card-body text-center">
     <h2>Catégorie : {{categorie.categorieNom}}</h2>
-    <img class="img-fluid img-thumbnail rounded-circle" [src]='["../../assets/"+categorie.imgCat]'>
+    <img class="img-fluid img-thumbnail rounded-circle" [src]='[categorie.imgCat]'>
   </div>
 
 
@@ -11,12 +11,12 @@
   <div *ngFor="let cat of categorie.publications" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <h4 class="card-title text-center">{{cat.nom}}</h4>
-      <a class="text-center"[routerLink]="['/achat/'+cat.id]">
-        <img class="ImageCarou card-img-top" alt="Responsive image" [src]='["../../assets/"+cat.img]'>
+      <a *ngIf="isConnected()" class="text-center"[routerLink]="['/achat/'+cat.id]">
+        <img class="ImageCarou card-img-top" alt="Responsive image" [src]='[cat.img]'>
       </a>
-      <div class="card-body">
-        <p class="card-text">{{cat.description}}</p>
-      </div>
+      <a *ngIf="!isConnected()" class="text-center"[routerLink]="['/connection']">
+        <img class="ImageCarou card-img-top" alt="Responsive image" [src]='[cat.img]'>
+      </a>
     </div>
   </div>
 </div>
