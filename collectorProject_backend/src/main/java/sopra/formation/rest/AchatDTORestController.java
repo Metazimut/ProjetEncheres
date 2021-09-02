@@ -1,12 +1,14 @@
 package sopra.formation.rest;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -138,7 +140,22 @@ public class AchatDTORestController {
 		}
 		
 		
-		
+		@PatchMapping("/enchere/{id}")
+		public Publication partialUpdate(@RequestBody Map<String, Object> updates, @PathVariable Long id) {
+			if (!publicationRepo.existsById(id)) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+			}
+
+			Publication publiFind = publicationRepo.findById(id).get();
+
+			if (updates.containsKey("prixActuel")) {
+				publiFind.setPrixActuel((Long) updates.get("prixActuel"));
+			}
+
+			publiFind = publicationRepo.save(publiFind);
+
+			return publiFind;
+		}
 		
 		
 		
