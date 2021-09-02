@@ -26,6 +26,26 @@ export class MesEncheresComponent implements OnInit {
     return this.mesEncheresService.encheres;
   }
 
+  listEncheresByUtilisateurPast(): Array<ParticipationEnchere> {
+    let encheresFilter: Array<ParticipationEnchere> = new Array<ParticipationEnchere>();
+    for(var i = 0; i < this.mesEncheresService.encheres.length; i++){
+      if(this.timeDiff(this.mesEncheresService.encheres[i].publication.dateEcheance) < 0){
+        encheresFilter.push(this.mesEncheresService.encheres[i]);
+      }
+    }
+    return encheresFilter;
+  }
+
+  listEncheresByUtilisateurActual(): Array<ParticipationEnchere> {
+    let encheresFilter: Array<ParticipationEnchere> = new Array<ParticipationEnchere>();
+    for(var i = 0; i < this.mesEncheresService.encheres.length; i++){
+      if(this.timeDiff(this.mesEncheresService.encheres[i].publication.dateEcheance) > 0){
+        encheresFilter.push(this.mesEncheresService.encheres[i]);
+      }
+    }
+    return encheresFilter;
+  }
+
   timeDiff(value: Date): number{
     let time=new Date();
     let echeance=new Date(value);
