@@ -55,10 +55,6 @@ export class AchatComponent implements OnInit {
     this.achatForm.commentaires = new Array<Commentaire>();
     this.achatForm.encheres = new Array<ParticipationEnchere>();
     this.new_enchere = 0;
-    if (this.moi==this.bestMan) {
-      this.blockEnchere=true;
-    }
-    else {this.blockEnchere=false;}
   }
 
   ngOnInit(): void {
@@ -73,6 +69,10 @@ export class AchatComponent implements OnInit {
         this.triCommentaires();
         this.new_enchere=this.achatForm.publication.prixActuel+1;
         this.meilleureEnchere();
+        if (this.moi==this.achatForm.publication.publicateur.id) {
+          console.log("on bloque1")
+          this.blockEnchere=true;
+        }
         });
       })
     this.subscription=interval(1000).subscribe(x => {
@@ -234,10 +234,13 @@ private timeDiff(value: Date): string{
         this.achatForm.publication.prixActuel=k;
       }
       this.bestMan=idPropMax;
-      if (this.moi==this.bestMan) {
+      if (this.moi==this.bestMan || this.moi==this.achatForm.publication.publicateur.id) {
+        console.log("on bloque2")
         this.blockEnchere=true;
       }
-      else {this.blockEnchere=false;}
+      else {
+        console.log("on debloque1")
+        this.blockEnchere=false;}
 
 
 
