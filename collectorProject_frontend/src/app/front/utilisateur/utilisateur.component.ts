@@ -47,6 +47,8 @@ export class UtilisateurComponent implements OnInit {
 
   save() {
     if(this.verifyUtilisateurContent()){
+      let today= new Date();
+      this.utilisateurForm.dateCreation= new Date(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
       if (this.utilisateurForm.id) {
         this.utilisateurService.modify(this.utilisateurForm).subscribe(resp => {
           this.utilisateurForm = resp;
