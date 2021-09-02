@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: "adminCategorie", component: AdminCategorieComponent},
   {path: "mesEnchadminCategorieeres", component: MesEncheresComponent},
   {path: "mesPublications", component: MesPublicationsComponent},
+  {path: "mesEncheres", component: MesEncheresComponent},
   {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "utilisateur", component: UtilisateurComponent},
   {path: "categorie/:id", component: CategorieComponent},
