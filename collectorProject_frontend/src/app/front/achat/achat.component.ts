@@ -73,6 +73,7 @@ export class AchatComponent implements OnInit {
           console.log("on bloque1")
           this.blockEnchere=true;
         }
+        this.commentaireEnCours="";
         });
       })
     this.subscription=interval(1000).subscribe(x => {
