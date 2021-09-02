@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="card mt-3">
+    <div *ngIf="categorieForm.categorieNom == null" class="card-header bg-secondary text-white">
+      <h3>Creation de la catégorie</h3>
+    </div>
+    <div *ngIf="categorieForm.categorieNom != null" class="card-header bg-secondary text-white">
+      <h3>Edition de la catégorie</h3>
+    </div>
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-sm-3">
+        <div class="custom-file">
+          <div *ngIf="categorieForm.imgCat">
+            <img src="{{categorieForm.imgCat}}" class="img-thumbnail img-fluid">
+          </div>
+          <label for="profilImg">Image de profil :</label>
+          <input type="file" [(ngModel)]="profilImgTmp" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImg">
+          <br/>
+          <br/>
+          <label for="profilImgURL">Importer l'image depuis une URL :</label>
+          <input type="text" [(ngModel)]="profilImgTmpURL" name="profilImgTmp" (change)="loadImg()" class="file-upload" id="profilImgURL">
+        </div>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-sm-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" required="required" class="form-control" id="nom" [(ngModel)]="categorieForm.categorieNom" name="nom">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <br/>
+        <br/>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+        <a type="submit" class="btn btn-success" (click)="save()" [routerLink]="['/adminCategorie/']">
+          <i class="fa fa-check"></i>
+        </a>
+        <a class="btn btn-warning" (click)="cancel()" [routerLink]="['/adminCategorie/']">
+          <i class="fa fa-sync"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

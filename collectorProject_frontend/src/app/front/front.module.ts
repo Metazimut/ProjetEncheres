@@ -12,6 +12,8 @@ import { MesPublicationsComponent } from './mes-publications/mes-publications.co
 import {MesEncheresComponent} from "./mes-encheres/mes-encheres.component";
 import {VenteComponent} from "./vente/vente.component";
 import {ValideventeComponent} from "./validevente/validevente.component";
+import { AdminCategorieComponent } from './admin-categorie/admin-categorie.component';
+import { CategorieCreationEditionComponent } from './categorie-creation-edition/categorie-creation-edition.component';
 
 
 
@@ -26,7 +28,9 @@ import {ValideventeComponent} from "./validevente/validevente.component";
     MesPublicationsComponent,
     MesEncheresComponent,
     VenteComponent,
-    ValideventeComponent
+    ValideventeComponent,
+    AdminCategorieComponent,
+    CategorieCreationEditionComponent
   ],
   imports: [
     CommonModule,
