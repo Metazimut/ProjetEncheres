@@ -1,10 +1,13 @@
-<div>
+<div *ngIf="listPublicationsByUtilisateurActual().length == 0 && listPublicationsByUtilisateurPast().length == 0">
+  <h4>Vous n'avez aucune publications</h4>
+</div>
+<div *ngIf="listPublicationsByUtilisateurActual().length != 0">
   <h4>Voici vos publications actuelles : </h4>
 </div>
 <div>
   <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add a new publication</button>
 </div>
-<div class="row">
+<div *ngIf="listPublicationsByUtilisateurActual().length != 0" class="row">
   <div *ngFor="let item of listPublicationsByUtilisateurActual()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.nom}}</p>
@@ -22,10 +25,10 @@
   </div>
 </div>
 
-<div>
+<div *ngIf="listPublicationsByUtilisateurPast().length != 0">
   <h4>Voici vos publications passées : </h4>
 </div>
-<div class="row">
+<div *ngIf="listPublicationsByUtilisateurPast().length != 0" class="row">
   <div *ngFor="let item of listPublicationsByUtilisateurPast()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.nom}}</p>

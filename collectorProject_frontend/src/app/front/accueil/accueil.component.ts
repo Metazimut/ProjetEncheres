@@ -81,5 +81,4 @@ export class AccueilComponent implements OnInit {
   listCategories(): Array<Categorie> {
     return this.accueilService.categories;
   }
-
 }

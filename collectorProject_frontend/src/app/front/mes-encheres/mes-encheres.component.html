@@ -1,7 +1,10 @@
-<div>
+<div *ngIf="listEncheresByUtilisateurActual().length == 0 && listEncheresByUtilisateurPast().length == 0">
+  <h4>Vous n'avez aucune encheres</h4>
+</div>
+<div *ngIf="listEncheresByUtilisateurActual().length != 0">
   <h4>Voici vos encheres actuelles : </h4>
 </div>
-<div class="row">
+<div *ngIf="listEncheresByUtilisateurActual().length != 0" class="row">
   <div *ngFor="let item of listEncheresByUtilisateurActual()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
@@ -17,10 +20,10 @@
     </div>
   </div>
 </div>
-<div>
+<div *ngIf="listEncheresByUtilisateurPast().length != 0">
   <h4>Voici vos encheres passées : </h4>
 </div>
-<div class="row">
+<div *ngIf="listEncheresByUtilisateurPast().length != 0" class="row">
   <div *ngFor="let item of listEncheresByUtilisateurPast()" class="col-md-4">
     <div class="cardCaroussel card mb-2">
       <p class="card-title text-center">{{item.publication.nom}}</p>
