@@ -24,7 +24,10 @@ createAnnonce(publi:Publication): Observable<Publication>{
 }
 
 findPublicationById(id: number): Observable<Publication>{
-    return this.http.get<Publication>(this.appConfigService.backEndUrl+'publication/'+id);
+    return this.http.get<Publication>(this.appConfigService.backEndUrl+"publication/"+id);
 }
 
+  deletePublicationById(id: number): Observable<void> {
+    return this.http.delete<void>(this.appConfigService.backEndUrl + "publication/" + id);
+  }
 }

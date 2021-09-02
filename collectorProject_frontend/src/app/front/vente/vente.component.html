@@ -12,7 +12,7 @@
       <div class="col-sm-4">
         <div class="form-group"><br>
           <h5>Informations de votre annonce :</h5>
-          <label for="titre">Titre :</label>
+          <label>Titre :</label>
           <input type="text" class="form-control" id="titre" [(ngModel)]="publication.nom" placeholder="Ajouter le titre de votre annonce" name="titre" required>
           <div class="valid-feedback">Valide.</div>
           <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#demo" class="text-danger" class="btn btn-link">?</button><div id="demo" class="collapse">
@@ -22,7 +22,7 @@
 
           <form action="/action_page.php" class="was-validated">
             <div class="form-group">
-              <label for="description">Description :</label>
+              <label>Description :</label>
               <textarea [(ngModel)]="publication.description" class="form-control" rows="5" id="description" placeholder="Ajouter une description" name="description" required></textarea>
               <div class="valid-feedback">Valid.</div>
               <div class="invalid-feedback">Champs obligatoire<button data-toggle="collapse" data-target="#filldescription" class="text-danger" class="btn btn-link">?</button><div id="filldescription" class="collapse">
@@ -67,6 +67,16 @@
             <img *ngIf="!img && img!=''" src="{{img}}" class="img-thumbnail" alt="image" width="304" height="236">
             <!--<img src="../../../assets/annonceImg/{{publicationForm.annonceImg}}" class="img-thumbnail alt="image" width="304" height="236">-->
           </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
           <br>
