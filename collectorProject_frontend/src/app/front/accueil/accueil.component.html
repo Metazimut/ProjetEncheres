@@ -1,5 +1,5 @@
-<h4 *ngIf="publicationsByNom == null">Last Publications</h4>
-<h4 *ngIf="publicationsByNom != null">Wanted Publication(s)</h4>
+<h4 *ngIf="publicationsByNom == null">Dernières publications</h4>
+<h4 *ngIf="publicationsByNom != null">Publications désirées</h4>
 <div>
   <select class="selectpicker" data-live-search="true" title="Choose publication" [(ngModel)]="nomPublication">
     <option *ngFor="let item of listPublicationsNom()">{{item}}</option>
@@ -48,7 +48,7 @@
 <br>
 
 <h4 *ngIf="categorieByNom == null">Top Categories</h4>
-<h4 *ngIf="categorieByNom != null">Wanted Category</h4>
+<h4 *ngIf="categorieByNom != null">Categories Désirées</h4>
 <div>
   <select class="selectpicker" data-live-search="true" title="Choose categorie" [(ngModel)]="nomCategorie">
     <option *ngFor="let item of listCategories()">{{item.categorieNom}}</option>
