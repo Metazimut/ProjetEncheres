@@ -103,10 +103,10 @@
 
     <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">
-        <a type="submit" class="btn btn-success" (click)="save()">
+        <a type="submit" class="btn btn-success" (click)="save()" [routerLink]="['/accueil']">
           <i class="fa fa-check"></i>
         </a>
-        <a class="btn btn-warning" (click)="cancel()">
+        <a class="btn btn-warning" (click)="cancel()" [routerLink]="['/accueil']">
           <i class="fa fa-sync"></i>
         </a>
       </div>
