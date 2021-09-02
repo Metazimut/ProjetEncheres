@@ -9,10 +9,13 @@
           <a class="nav-link" *ngIf="isType('Utilisateur')" [routerLink]="['/vente']">Vente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isConnected()" [routerLink]="['mesPublications']">Mes publications</a>
+          <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['mesPublications']">Mes publications</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isConnected()" [routerLink]="['mesEncheres']">Mes encheres</a>
+          <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['mesEncheres']">Mes encheres</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isConnected() && isType('Admin')" [routerLink]="['mesEncheres']">Gestion des catégories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="isConnected() && isType('Utilisateur')" [routerLink]="['/compteUtilisateur']">Mon Compte</a>
